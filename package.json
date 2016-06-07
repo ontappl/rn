@@ -3,10 +3,16 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start"
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "lint": "./node_modules/.bin/esw -w"
   },
   "dependencies": {
     "react": "^15.1.0",
     "react-native": "0.27.1"
+  },
+  "devDependencies": {
+    "eslint": "^2.11.1",
+    "eslint-plugin-react": "^5.1.1",
+    "eslint-watch": "^2.1.11"
   }
 }
