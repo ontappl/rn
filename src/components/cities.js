@@ -17,7 +17,11 @@ class CitiesContainer extends React.Component {
     }
 
     render() {
-        const {isLoading, cities} = this.props;
+        const {isLoading, citiesObject} = this.props;
+        const cities = Object
+            .keys(citiesObject)
+            .map((k) => citiesObject[k])
+            .sort((a, b) => a.name.localeCompare(b.name));
         return (
             <ScrollView style={{flex: 1}}>
                 {isLoading && <Text>Loading...</Text>}
@@ -49,7 +53,7 @@ const CityButton = ({city, onPress}) => (
 
 const mapStateToProps = ({cities}) => ({
     isLoading: cities.isLoading,
-    cities: cities.cities,
+    citiesObject: cities.cities,
     error: cities.error,
 });
 

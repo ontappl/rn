@@ -22,3 +22,19 @@ export const fetchCities = () => {
             }
         });
 };
+
+export const fetchPubs = (cityId) => {
+    const options = {
+        method: 'GET',
+        headers,
+    };
+    return fetch(`${baseUrl}cities/${cityId}/pubs`, options)
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                const message = `Houston we have problem: ${response.status}, ${response.url}`;
+                throw new Error(message);
+            }
+        });
+};

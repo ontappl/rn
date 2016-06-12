@@ -12,6 +12,7 @@ export function* saga() {
 
 function* cities() {
     yield fork(takeLatest, actionTypes.FETCH_CITIES_REQUEST, fetchCities);
+    yield fork(takeLatest, actionTypes.FETCH_PUBS_REQUEST, fetchPubs);
 }
 
 function* fetchCities() {
@@ -21,5 +22,15 @@ function* fetchCities() {
     } catch (error) {
         console.error(error);
         yield put(actions.fetchCitiesFailure(error));
+    }
+}
+
+function* fetchPubs(action) {
+    try {
+        const pubs = yield call(api.fetchPubs, action.cityId);
+        yield put(actions.fetchPubsSuccess(action.cityId, pubs));
+    } catch (error) {
+        console.error(error);
+        yield put(actions.fetchPubsFailure(error));
     }
 }
