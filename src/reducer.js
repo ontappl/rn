@@ -2,6 +2,7 @@ import {combineReducers} from 'redux';
 import update from 'react-addons-update';
 
 import * as actionTypes from './actionTypes';
+import {reducer as navigation} from './navigation';
 
 
 const initialState = {
@@ -35,4 +36,7 @@ const cities = (state = initialState, action) => {
     return state;
 };
 
-export const reducer = combineReducers({cities});
+export const reducer = combineReducers({
+    navigation,
+    cities,
+});
