@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 
 import {Cities} from './Cities';
 import {City} from './City';
+import {Pub} from './Pub';
 import * as navigationActions from '../navigation/actions';
 
 
@@ -39,6 +40,8 @@ class RootContainer extends React.Component {
                 return <Cities key={props.scene.route.key}/>;
             case 'city':
                 return <City key={props.scene.route.key} city={props.scene.route.city}/>;
+            case 'pub':
+                return <Pub key={props.scene.route.key} pub={props.scene.route.pub}/>;
         }
     }
 }

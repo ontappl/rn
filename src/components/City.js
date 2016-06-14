@@ -9,9 +9,10 @@ import {
 
 import * as actions from '../actions';
 import * as selectors from '../selectors';
+import * as navigationActions from '../navigation/actions';
 
 
-const CityComponent = ({city, pubs}) => {
+const CityComponent = ({city, pubs, onPubPress}) => {
     return (
         <ScrollView style={{flex: 1, backgroundColor: 'yellow'}}>
             <Text>SINGLE CITY</Text>
@@ -20,14 +21,15 @@ const CityComponent = ({city, pubs}) => {
                 <PubButton
                     key={p.id}
                     pub={p}
+                    onPress={() => onPubPress(p)}
                 />
             )}
         </ScrollView>
     );
 };
 
-const PubButton = ({pub}) => (
-    <TouchableNativeFeedback>
+const PubButton = ({pub, onPress}) => (
+    <TouchableNativeFeedback onPress={onPress}>
         <View style={{padding: 16}}>
             <Text>{pub.name}</Text>
         </View>
@@ -36,13 +38,17 @@ const PubButton = ({pub}) => (
 
 class CityContainer extends React.Component {
     componentWillMount() {
-        console.log('componentWillMount', this);
         this.props.fetchPubs(this.props.city.id);
     }
 
     render() {
         const {city, pubs} = this.props;
-        return <CityComponent city={city} pubs={pubs}/>
+        return <CityComponent city={city} pubs={pubs} onPubPress={this._onPubPress.bind(this)}/>
+    }
+
+    _onPubPress(pub) {
+        const state = {key: 'pub', pub};
+        this.props.selectPub(state);
     }
 }
 
@@ -52,6 +58,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapActions = {
     fetchPubs: actions.fetchPubsRequest,
+    selectPub: navigationActions.push,
 };
 
 export const City = connect(mapStateToProps, mapActions)(CityContainer);

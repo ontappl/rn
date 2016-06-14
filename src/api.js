@@ -38,3 +38,19 @@ export const fetchPubs = (cityId) => {
             }
         });
 };
+
+export const fetchTaps = (pubId) => {
+    const options = {
+        method: 'GET',
+        headers,
+    };
+    return fetch(`${baseUrl}pubs/${pubId}/taps`, options)
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                const message = `Houston we have problem: ${response.status}, ${response.url}`;
+                throw new Error(message);
+            }
+        });
+};

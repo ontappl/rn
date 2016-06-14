@@ -30,3 +30,19 @@ export const fetchPubsFailure = (error) => ({
     type: actionTypes.FETCH_PUBS_FAILURE,
     error,
 });
+
+export const fetchTapsRequest = (pubId) => ({
+    type: actionTypes.FETCH_TAPS_REQUEST,
+    pubId,
+});
+
+export const fetchTapsSuccess = (pubId, taps) => ({
+    type: actionTypes.FETCH_TAPS_SUCCESS,
+    pubId,
+    taps,
+});
+
+export const fetchTapsFailure = (error) => ({
+    type: actionTypes.FETCH_TAPS_FAILURE,
+    error,
+});
