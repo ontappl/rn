@@ -1,6 +1,9 @@
 import React from 'react';
-import {NavigationExperimental} from 'react-native';
 import {connect} from 'react-redux';
+import {
+    NavigationExperimental,
+    BackAndroid,
+} from 'react-native';
 
 import {Cities} from './Cities';
 import {City} from './City';
@@ -9,6 +12,10 @@ import * as navigationActions from '../navigation/actions';
 
 
 class RootContainer extends React.Component {
+    componentDidMount() {
+        BackAndroid.addEventListener('hardwareBackPress', () => this.props.navigationPop());
+    }
+
     render() {
         const {navigationState, onNavigate} = this.props;
         return (
@@ -57,7 +64,8 @@ const dispatchActions = (dispatch) => ({
         } else {
             dispatch(navigationActions.push(action));
         }
-    }
+    },
+    navigationPop: () => dispatch(navigationActions.pop()),
 });
 
 
