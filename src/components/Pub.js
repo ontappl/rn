@@ -17,7 +17,7 @@ const PubComponent = ({pub, taps}) => (
             <Text style={styles.title}>{pub.name}</Text>
         </View>
         <ScrollView style={{flex: 1}}>
-            {taps.map((t) => <Tap tap={t}/>)}
+            {taps.map((t) => <Tap key={t.tapName} tap={t}/>)}
         </ScrollView>
     </View>
 );
