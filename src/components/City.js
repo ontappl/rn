@@ -12,11 +12,9 @@ import * as selectors from '../selectors';
 import * as navigationActions from '../navigation/actions';
 
 
-const CityComponent = ({city, pubs, onPubPress}) => {
+const CityComponent = ({pubs, onPubPress}) => {
     return (
         <ScrollView style={{flex: 1, marginTop: 56}}>
-            <Text>SINGLE CITY</Text>
-            <Text>{city.name}</Text>
             {pubs.map((p) =>
                 <PubButton
                     key={p.id}

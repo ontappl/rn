@@ -24,7 +24,6 @@ class CitiesContainer extends React.Component {
             .sort((a, b) => a.name.localeCompare(b.name));
         return (
             <ScrollView style={{flex: 1, marginTop: 56}}>
-                {isLoading && <Text>Loading...</Text>}
                 {cities.length > 0 && cities.map(c =>
                     <CityButton
                         key={c.id}
