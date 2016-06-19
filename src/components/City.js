@@ -5,6 +5,7 @@ import {
     Text,
     View,
     TouchableNativeFeedback,
+    InteractionManager,
 } from 'react-native';
 
 import * as actions from '../actions';
@@ -36,7 +37,9 @@ const PubButton = ({pub, onPress}) => (
 
 class CityContainer extends React.Component {
     componentWillMount() {
-        this.props.fetchPubs(this.props.city.id);
+        InteractionManager.runAfterInteractions(() => {
+            this.props.fetchPubs(this.props.city.id);
+        });
     }
 
     render() {

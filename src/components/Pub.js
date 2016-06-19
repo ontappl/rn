@@ -5,6 +5,7 @@ import {
     View,
     Text,
     StyleSheet,
+    InteractionManager,
 } from 'react-native';
 
 import * as actions from '../actions';
@@ -85,8 +86,11 @@ const styles = StyleSheet.create({
 
 class PubContainer extends React.Component {
     componentWillMount() {
-        const {fetchTaps, pub} = this.props;
-        fetchTaps(pub.id);
+        InteractionManager.runAfterInteractions(() => {
+            const {fetchTaps, pub} = this.props;
+            fetchTaps(pub.id);
+        });
+
     }
 
     render() {
