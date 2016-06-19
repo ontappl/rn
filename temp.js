@@ -5,7 +5,7 @@ import {
     BackAndroid,
 } from 'react-native';
 
-import {Cities} from './Cities2';
+import {Cities} from './Cities';
 import {City} from './City';
 import {Pub} from './Pub';
 import * as navigationActions from '../navigation/actions';
