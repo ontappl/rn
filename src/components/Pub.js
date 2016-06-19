@@ -12,14 +12,9 @@ import * as selectors from '../selectors';
 
 
 const PubComponent = ({pub, taps}) => (
-    <View style={{flex: 1, backgroundColor: 'white'}}>
-        <View style={styles.titleWrapper}>
-            <Text style={styles.title}>{pub.name}</Text>
-        </View>
-        <ScrollView style={{flex: 1}}>
-            {taps.map((t) => <Tap key={t.tapName} tap={t}/>)}
-        </ScrollView>
-    </View>
+    <ScrollView style={{flex: 1, marginTop: 56}}>
+        {taps.map((t) => <Tap key={t.tapName} tap={t}/>)}
+    </ScrollView>
 );
 
 const Tap = ({tap}) => (
@@ -48,14 +43,6 @@ const Beer = ({beer}) => (
 );
 
 const styles = StyleSheet.create({
-    titleWrapper: {
-        borderBottomWidth: 0.5,
-        borderColor: 'gray',
-    },
-    title: {
-        margin: 16,
-        fontSize: 24,
-    },
     tap: {
         borderBottomWidth: 0.5,
         borderColor: 'gray',

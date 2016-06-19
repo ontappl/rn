@@ -23,7 +23,7 @@ class CitiesContainer extends React.Component {
             .map((k) => citiesObject[k])
             .sort((a, b) => a.name.localeCompare(b.name));
         return (
-            <ScrollView style={{flex: 1}}>
+            <ScrollView style={{flex: 1, marginTop: 56}}>
                 {isLoading && <Text>Loading...</Text>}
                 {cities.length > 0 && cities.map(c =>
                     <CityButton
@@ -38,7 +38,7 @@ class CitiesContainer extends React.Component {
     }
 
     _onCityPress(city) {
-        const state = {key: 'city', city};
+        const state = {key: 'city', city, title: city.name};
         this.props.selectCity(state);
     }
 }

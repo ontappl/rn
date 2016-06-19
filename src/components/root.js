@@ -18,14 +18,20 @@ class RootContainer extends React.Component {
 
     render() {
         const {navigationState, onNavigate} = this.props;
+
         return (
             <NavigationExperimental.Transitioner
                 style={{flex: 1}}
+                renderOverlay={this._renderOverlay.bind(this)}
                 renderScene={this._renderCard.bind(this)}
                 navigationState={navigationState}
                 onNavigate={onNavigate}
             />
         );
+    }
+
+    _renderOverlay(props) {
+        return <NavigationExperimental.Header {...props}/>;
     }
 
     _renderCard(props) {
@@ -59,7 +65,9 @@ const mapStateToProps = ({navigation}) => ({
 
 const dispatchActions = (dispatch) => ({
     onNavigate: action => {
-        if (action.type === NavigationExperimental.Card.CardStackPanResponder.Actions.BACK.type) {
+        const isBackFromOverlay = action.type === 'BackAction';
+        const isBackFromCard = action.type === NavigationExperimental.Card.CardStackPanResponder.Actions.BACK.type;
+        if (isBackFromOverlay || isBackFromCard) {
             dispatch(navigationActions.pop());
         } else {
             dispatch(navigationActions.push(action));

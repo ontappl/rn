@@ -14,7 +14,7 @@ import * as navigationActions from '../navigation/actions';
 
 const CityComponent = ({city, pubs, onPubPress}) => {
     return (
-        <ScrollView style={{flex: 1, backgroundColor: 'yellow'}}>
+        <ScrollView style={{flex: 1, marginTop: 56}}>
             <Text>SINGLE CITY</Text>
             <Text>{city.name}</Text>
             {pubs.map((p) =>
@@ -47,7 +47,7 @@ class CityContainer extends React.Component {
     }
 
     _onPubPress(pub) {
-        const state = {key: 'pub', pub};
+        const state = {key: 'pub', pub, title: pub.name};
         this.props.selectPub(state);
     }
 }
