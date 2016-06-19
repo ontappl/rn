@@ -13,7 +13,7 @@ import * as navigationActions from '../navigation/actions';
 
 class RootContainer extends React.Component {
     componentDidMount() {
-        BackAndroid.addEventListener('hardwareBackPress', () => this.props.navigationPop());
+        BackAndroid.addEventListener('hardwareBackPress', () => this.props.navigationPop('BackAndroid'));
     }
 
     render() {
@@ -73,7 +73,7 @@ const dispatchActions = (dispatch) => ({
             dispatch(navigationActions.push(action));
         }
     },
-    navigationPop: () => dispatch(navigationActions.pop()),
+    navigationPop: (source) => dispatch(navigationActions.pop(source)),
 });
 
 

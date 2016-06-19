@@ -9,6 +9,7 @@ export const push = (state) => {
     };
 };
 
-export const pop = () => ({
+export const pop = (source) => ({
     type: actionTypes.POP,
+    source,
 });

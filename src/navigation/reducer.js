@@ -1,4 +1,6 @@
+import {BackAndroid} from 'react-native';
 import * as NavigationStateUtils from 'NavigationStateUtils';
+
 import * as actionTypes from './actionTypes';
 
 
@@ -22,6 +24,10 @@ export const reducer = (state = initialState, action) => {
             return NavigationStateUtils.push(newState, action.newState);
         }
         case actionTypes.POP: {
+            if (state.index === 0 && action.source === 'BackAndroid') {
+                BackAndroid.exitApp();
+                return state;
+            }
             if (state.index === 0 || state.routes.length === 1) {
                 return state;
             }
