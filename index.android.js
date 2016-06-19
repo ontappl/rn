@@ -3,7 +3,7 @@ import {AppRegistry} from 'react-native';
 import {Provider} from 'react-redux';
 
 import {configureStore} from './src/configureStore';
-import {Root} from './src/components/Root2';
+import {Root} from './src/components/Root';
 
 
 const store = configureStore();
