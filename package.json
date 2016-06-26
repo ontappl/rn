@@ -10,6 +10,8 @@
     "react": "^15.1.0",
     "react-addons-update": "^15.1.0",
     "react-native": "0.28.0-rc.0",
+    "react-native-fabric": "^0.2.3",
+    "react-native-fabric-crashlytics": "^0.1.2",
     "react-redux": "^4.4.5",
     "redux": "^3.5.2",
     "redux-saga": "^0.10.4"

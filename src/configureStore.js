@@ -1,13 +1,14 @@
 import createSagaMiddleware from 'redux-saga';
-import { createStore, compose, applyMiddleware } from 'redux';
+import {createStore, applyMiddleware} from 'redux';
 
 import {reducer} from './reducer';
 import {saga} from './saga';
+import {middleware as analyticsMiddleware} from './analytics';
 
 
 export function configureStore() {
     const sagaMiddleWare = createSagaMiddleware();
-    const store = createStore(reducer, applyMiddleware(sagaMiddleWare));
+    const store = createStore(reducer, applyMiddleware(analyticsMiddleware, sagaMiddleWare));
     sagaMiddleWare.run(saga);
     return store;
 }

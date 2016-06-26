@@ -10,6 +10,10 @@ export const config = {
 };
 
 ```
+- Fabric integration. Put `fabric.properties` file inside `/android/app` directory and fill with template:
+```
+apiKey=lolololol
+```
 - ESLint: `npm run lint`
 
 ## Android Setup
