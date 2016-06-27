@@ -22,6 +22,7 @@ const Tap = ({tap}) => (
     <View style={styles.tap}>
         <Text style={styles.tapName}>{tap.tapName}</Text>
         <Beer beer={tap.beer}/>
+        <Prices prices={tap.prices}/>
     </View>
 );
 
@@ -42,6 +43,16 @@ const Beer = ({beer}) => (
         </View>
     </View>
 );
+
+const Prices = ({prices}) => {
+    if (!prices || prices.length === 0) {
+        return null;
+    }
+
+    return (
+        <Text>Ceny: {prices.map((p) => Number(p/100).toFixed(2)).join(', ')}</Text>
+    );
+};
 
 const styles = StyleSheet.create({
     tap: {
