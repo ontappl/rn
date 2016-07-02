@@ -2,8 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {
     NavigationExperimental,
-    BackAndroid,
-    InteractionManager,
 } from 'react-native';
 
 import * as rootNavigatorKeys from '../rootNavigatorKeys';
@@ -13,54 +11,40 @@ import {Home} from './Home';
 
 class RootNavigatorContainer extends React.Component {
     render() {
-        const {navigationState, onNavigate} = this.props;
+        const {navigationState} = this.props;
 
         return (
             <NavigationExperimental.Transitioner
                 style={{flex: 1}}
-                render={this._renderCard.bind(this)}
                 navigationState={navigationState}
-                onNavigate={onNavigate}
+                render={this._render.bind(this)}
                 onTransitionEnd={this._onTransitionEnd.bind(this)}
             />
         );
     }
 
-    _renderCard(props) {
-        const {navigationState, onNavigate} = this.props;
-        return (
-            <NavigationExperimental.Card
-                {...props}
-                navigationState={navigationState}
-                onNavigate={onNavigate}
-                renderScene={this._renderScene}
-                key={props.scene.route.key}
-            />
-        );
-    }
+    _render(transitionProps) {
+        const routeKey = transitionProps.scene.route.key;
 
-    _renderScene(props) {
-        switch (props.scene.route.key) {
+        switch (routeKey) {
             case rootNavigatorKeys.ONBOARDING_SELECT_CITY:
-                return <OnboardingSelectCity key={props.scene.route.key}/>;
+                return <OnboardingSelectCity key={routeKey}/>;
             case rootNavigatorKeys.HOME:
-                return <Home key={props.scene.route.key}/>;
+                return <Home key={routeKey}/>;
             default:
-                throw `Unexpected scene key ${props.scene.route.key}`
+                throw `Unexpected scene key ${routeKey}`
         }
     }
 
     _onTransitionEnd() {
-        console.log('_onTransitionEnd');
         const {navigationState, resetOnCurrentScene} = this.props;
-        const {index, routes} = navigationState;
-        console.log(index, routes);
-        
+        const {routes} = navigationState;
+
         const twoRoutes = routes.length === 2;
         const previousWasOnboarding = twoRoutes && routes[0].key === rootNavigatorKeys.ONBOARDING_SELECT_CITY;
         const currentIsHome = twoRoutes && routes[1].key === rootNavigatorKeys.HOME;
         if (twoRoutes && previousWasOnboarding && currentIsHome) {
-            InteractionManager.runAfterInteractions(() => resetOnCurrentScene());
+            resetOnCurrentScene();
         }
     }
 }
