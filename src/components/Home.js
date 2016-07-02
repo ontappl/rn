@@ -9,7 +9,7 @@ import {TabBar} from './TabBar';
 
 
 export const Home = ({city, tabs, onChangeTab, selectedScene}) => (
-    <View style={{flex: 1, backgroundColor: 'pink'}}>
+    <View style={{flex: 1}}>
         <NavigationBar title={city.name}/>
         <TabBar tabs={tabs} onChangeTab={onChangeTab}/>
         {selectedScene}

@@ -6,6 +6,7 @@ import {reducer as navigation} from './navigation';
 import {reducer as appReducer} from './reducers/app';
 import {reducer as rootNavigator} from './reducers/rootNavigator';
 import {homeTabs} from './reducers/homeTabs';
+import {pubs} from './reducers/pubs';
 
 
 const initialState = {
@@ -37,33 +38,33 @@ const cities = (state = initialState, action) => {
                 },
             });
 
-        case actionTypes.FETCH_PUBS_REQUEST:
-            return update(state, {
-                isLoading: {$set: true},
-            });
-        case actionTypes.FETCH_PUBS_SUCCESS:
-            const {pubs, cityId} = action;
-            const newPubs = pubs.reduce((p, c) => ({...p, [c.id]: c}), {});
-            const newIds = Object.keys(newPubs);
-            const newState = update(state, {
-                isLoading: {$set: false},
-                pubs: {$merge: newPubs},
-                cities: {
-                    [cityId]: {
-                        $merge: {
-                            pubs: newIds,
-                        },
-                    },
-                },
-            });
-            return newState;
-        case actionTypes.FETCH_PUBS_FAILURE:
-            return update(state, {
-                $merge: {
-                    isLoading: false,
-                    error: action.error,
-                },
-            });
+        // case actionTypes.FETCH_PUBS_REQUEST:
+        //     return update(state, {
+        //         isLoading: {$set: true},
+        //     });
+        // case actionTypes.FETCH_PUBS_SUCCESS:
+        //     const {pubs, cityId} = action;
+        //     const newPubs = pubs.reduce((p, c) => ({...p, [c.id]: c}), {});
+        //     const newIds = Object.keys(newPubs);
+        //     const newState = update(state, {
+        //         isLoading: {$set: false},
+        //         pubs: {$merge: newPubs},
+        //         cities: {
+        //             [cityId]: {
+        //                 $merge: {
+        //                     pubs: newIds,
+        //                 },
+        //             },
+        //         },
+        //     });
+        //     return newState;
+        // case actionTypes.FETCH_PUBS_FAILURE:
+        //     return update(state, {
+        //         $merge: {
+        //             isLoading: false,
+        //             error: action.error,
+        //         },
+        //     });
 
         case actionTypes.FETCH_TAPS_REQUEST:
             return update(state, {
@@ -98,4 +99,5 @@ export const reducer = combineReducers({
     app: appReducer,
     rootNavigator,
     homeTabs,
+    pubs,
 });

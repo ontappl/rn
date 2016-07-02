@@ -1,3 +1,3 @@
-/**
- * Created by neciu on 02/07/16.
- */
+export const FETCH_PUBS_REQUEST = 'FETCH_PUBS_REQUEST';
+export const FETCH_PUBS_SUCCESS = 'FETCH_PUBS_SUCCESS';
+export const FETCH_PUBS_FAILURE = 'FETCH_PUBS_FAILURE';
