@@ -3,6 +3,8 @@ import update from 'react-addons-update';
 
 import * as actionTypes from './actionTypes';
 import {reducer as navigation} from './navigation';
+import {reducer as appReducer} from './reducers/app';
+import {reducer as rootNavigator} from './reducers/rootNavigator';
 
 
 const initialState = {
@@ -90,6 +92,8 @@ const cities = (state = initialState, action) => {
 };
 
 export const reducer = combineReducers({
-    navigation,
     cities,
+    // navigation,
+    app: appReducer,
+    rootNavigator,
 });

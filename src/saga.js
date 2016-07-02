@@ -5,8 +5,10 @@ import * as actionTypes from './actionTypes';
 import * as actions from './actions';
 import * as api from './api';
 
+import {saga as rootNavigator} from './sagas/rootNavigator';
 
 export function* saga() {
+    yield fork(rootNavigator);
     yield fork(cities);
 }
 

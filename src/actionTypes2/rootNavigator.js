@@ -1,0 +1,3 @@
+export const PUSH = 'ROOT_NAVIGATOR_PUSH';
+export const POP = 'ROOT_NAVIGATOR_POP';
+export const RESET_ON_CURRENT_SCENE = 'RESET_ON_CURRENT_SCENE';
