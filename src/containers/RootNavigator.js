@@ -18,7 +18,7 @@ class RootNavigatorContainer extends React.Component {
         return (
             <NavigationExperimental.Transitioner
                 style={{flex: 1}}
-                renderScene={this._renderCard.bind(this)}
+                render={this._renderCard.bind(this)}
                 navigationState={navigationState}
                 onNavigate={onNavigate}
                 onTransitionEnd={this._onTransitionEnd.bind(this)}
