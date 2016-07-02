@@ -8,14 +8,10 @@ import {NavigationBar} from './NavigationBar';
 import {TabBar} from './TabBar';
 
 
-export const Home = ({city}) => (
+export const Home = ({city, tabs, onChangeTab, selectedScene}) => (
     <View style={{flex: 1, backgroundColor: 'pink'}}>
         <NavigationBar title={city.name}/>
-        <TabBar buttonParams={[{title: 'puby', selected: true, onPress: ()=>console.log('puby')}, {title: 'piwa', selected: false, onPress: () => console.log('piwa')}]}/>
-        <Text>------ Home ------</Text>
-        <Text>------ Home ------</Text>
-        <Text>------ Home ------</Text>
-        <Text>------ Home ------</Text>
-        <Text>------ Home ------</Text>
+        <TabBar tabs={tabs} onChangeTab={onChangeTab}/>
+        {selectedScene}
     </View>
 );

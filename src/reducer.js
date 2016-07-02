@@ -5,6 +5,7 @@ import * as actionTypes from './actionTypes';
 import {reducer as navigation} from './navigation';
 import {reducer as appReducer} from './reducers/app';
 import {reducer as rootNavigator} from './reducers/rootNavigator';
+import {homeTabs} from './reducers/homeTabs';
 
 
 const initialState = {
@@ -96,4 +97,5 @@ export const reducer = combineReducers({
     // navigation,
     app: appReducer,
     rootNavigator,
+    homeTabs,
 });

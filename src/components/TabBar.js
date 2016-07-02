@@ -7,14 +7,16 @@ import {
 } from 'react-native';
 
 
-export const TabBar = ({buttonParams}) => (
+export const TabBar = ({tabs, onChangeTab}) => (
     <View style={styles.wrapper}>
-        {buttonParams.map((bP) => <Button key={bP.title} {...bP}/>)}
+        {tabs.tabs.map((tab, i) =>
+            <Button {...tab} selected={tabs.index === i} onPress={() => onChangeTab(i)}/>
+        )}
     </View>
 );
 
 const Button = ({title, selected, onPress}) => (
-    <TouchableNativeFeedback>
+    <TouchableNativeFeedback onPress={onPress}>
         <View style={styles.button}>
             <View style={styles.textWrapper}>
                 <Text style={styles.text}>{title}</Text>
