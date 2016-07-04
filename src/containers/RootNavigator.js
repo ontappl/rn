@@ -8,6 +8,7 @@ import * as rootNavigatorKeys from '../rootNavigatorKeys';
 import * as actions from '../actions2/rootNavigator';
 import {OnboardingSelectCity} from './OnboardingSelectCity';
 import {Home} from './Home';
+import {Pub} from './Pub';
 
 class RootNavigatorContainer extends React.Component {
     render() {
@@ -31,6 +32,8 @@ class RootNavigatorContainer extends React.Component {
                 return <OnboardingSelectCity key={routeKey}/>;
             case rootNavigatorKeys.HOME:
                 return <Home key={routeKey}/>;
+            case rootNavigatorKeys.PUB:
+                return <Pub key={routeKey}/>;
             default:
                 throw `Unexpected scene key ${routeKey}`
         }

@@ -10,7 +10,7 @@ import {
 import {PlainListRow, PlainListSeparator} from './PlainListRow';
 
 
-export const Pubs = ({isLoading, pubsDataSource}) => (
+export const Pubs = ({isLoading, pubsDataSource, onPubSelect}) => (
     <View style={{flex: 1, backgroundColor: 'white'}}>
         {isLoading && <ActivityIndicator style={styles.activityIndicator} size="large"/>}
         {!isLoading &&
@@ -18,22 +18,14 @@ export const Pubs = ({isLoading, pubsDataSource}) => (
             style={styles.list}
             enableEmptySections={true}
             dataSource={pubsDataSource}
-            renderRow={renderRow}
-            renderSeparator={renderSeparator}
+            renderRow={(rowData) => <PlainListRow key={rowData.id} text={rowData.name} onPress={() => onPubSelect(rowData.id, rowData.name)}/>}
+            renderSeparator={(_, rowId) => <PlainListSeparator key={rowId}/>}
             contentContainerStyle={{paddingTop: 8}}
             initialListSize={10}
             pageSize={10}
         />}
     </View>
 );
-
-function renderRow(rowData) {
-    return <PlainListRow key={rowData.id} text={rowData.name}/>
-}
-
-function renderSeparator(_, rowId) {
-    return <PlainListSeparator key={rowId}/>
-}
 
 const styles = StyleSheet.create({
     activityIndicator: {

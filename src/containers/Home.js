@@ -5,7 +5,7 @@ import {Home as HomeComponent} from '../components';
 import {Pubs} from './Pubs';
 import {Beers} from './Beers';
 import * as selectors from '../selectors/cities';
-import * as actions from '../actions2/homeTabs';
+import * as tabsActions from '../actions2/homeTabs';
 
 
 class HomeContainer extends React.Component {
@@ -39,7 +39,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  changeTab: actions.changeTab,
+  changeTab: tabsActions.changeTab,
 };
 
 export const Home = connect(mapStateToProps, mapDispatchToProps)(HomeContainer);

@@ -6,8 +6,8 @@ import {
 import {connect} from 'react-redux';
 
 import {Pubs as PubsComponent} from '../components';
-import * as actions from '../actions2/pubs';
-import * as selectors from '../selectors/pubs';
+import * as pubActions from '../actions2/pubs';
+import * as pubSelectors from '../selectors/pubs';
 
 
 class PubsContainer extends React.Component {
@@ -17,7 +17,8 @@ class PubsContainer extends React.Component {
     }
 
     render() {
-        return <PubsComponent {...this.props}/>;
+        const {selectPub} = this.props;
+        return <PubsComponent {...this.props} onPubSelect={(id, name) => selectPub(id, name)}/>;
     }
 }
 
@@ -26,11 +27,12 @@ const dataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2
 const mapStateToProps = (state) => ({
     selectedCity: state.app.selectedCity,
     isLoading: state.pubs.isLoading,
-    pubsDataSource: dataSource.cloneWithRows(selectors.sortedPubs(state, state.app.selectedCity)),
+    pubsDataSource: dataSource.cloneWithRows(pubSelectors.sortedPubs(state, state.app.selectedCity)),
 });
 
 const mapDispatchToProps = {
-    fetchPubs: actions.fetchPubsRequest,
+    fetchPubs: pubActions.fetchPubsRequest,
+    selectPub: pubActions.selectPub,
 };
 
 export const Pubs = connect(mapStateToProps, mapDispatchToProps)(PubsContainer);

@@ -15,3 +15,9 @@ export const fetchPubsFailure = (error) => ({
     type: actionTypes.FETCH_PUBS_FAILURE,
     error,
 });
+
+export const selectPub = (id, name) => ({
+    type: actionTypes.SELECT_PUB,
+    id,
+    name,
+});
