@@ -8,10 +8,8 @@ import {
 } from 'react-native';
 
 import {NavigationBar} from './NavigationBar';
-import {
-    PlainListRow,
-    PlainListSeparator,
-} from './PlainListRow';
+import {TapSummary} from './TapSummary';
+import {PlainListSeparator} from './PlainListRow';
 
 
 export const Pub = ({isLoading, name, tapsDataSource, onBack}) => (
@@ -23,11 +21,11 @@ export const Pub = ({isLoading, name, tapsDataSource, onBack}) => (
             style={styles.list}
             enableEmptySections={true}
             dataSource={tapsDataSource}
-            renderRow={(rowData) => <PlainListRow key={rowData.id} text={rowData.tapName} onPress={() => console.log(rowData.tapName)}/>}
+            renderRow={(rowData) => <TapSummary key={rowData.name} tap={rowData}/>}
             renderSeparator={(_, rowId) => <PlainListSeparator key={rowId}/>}
             contentContainerStyle={{paddingTop: 8}}
-            initialListSize={10}
-            pageSize={10}
+            initialListSize={4}
+            pageSize={6}
         />}
     </View>
 );
