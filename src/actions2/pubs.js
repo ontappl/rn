@@ -21,3 +21,19 @@ export const selectPub = (id, name) => ({
     id,
     name,
 });
+
+export const fetchTapsRequest = (pubId) => ({
+    type: actionTypes.FETCH_TAPS_REQUEST,
+    pubId,
+});
+
+export const fetchTapsSuccess = (pubId, taps) => ({
+    type: actionTypes.FETCH_TAPS_SUCCESS,
+    pubId,
+    taps,
+});
+
+export const fetchTapsFailure = (error) => ({
+    type: actionTypes.FETCH_TAPS_FAILURE,
+    error,
+});

@@ -4,3 +4,10 @@ export function sortedPubs({pubs}, cityId) {
         .filter((p) => p.city === cityId)
         .sort((a, b) => a.name.localeCompare(b.name));
 }
+
+export function taps(state, pubId) {
+    const taps = state.pubs.pubs[pubId].taps;
+    return taps ? taps : [];
+}
+
+export const pub = (state, pubId) => state.pubs.pubs[pubId];

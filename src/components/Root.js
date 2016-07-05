@@ -7,7 +7,7 @@ import {
 
 import {Cities} from './Cities';
 import {City} from './City';
-import {Pub} from './Pub';
+import {PubOld} from './PubOld';
 import * as navigationActions from '../navigation/actions';
 
 
@@ -54,7 +54,7 @@ class RootContainer extends React.Component {
             case 'city':
                 return <City key={props.scene.route.key} city={props.scene.route.city}/>;
             case 'pub':
-                return <Pub key={props.scene.route.key} pub={props.scene.route.pub}/>;
+                return <PubOld key={props.scene.route.key} pub={props.scene.route.pub}/>;
         }
     }
 }

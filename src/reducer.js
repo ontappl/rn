@@ -66,28 +66,28 @@ const cities = (state = initialState, action) => {
         //         },
         //     });
 
-        case actionTypes.FETCH_TAPS_REQUEST:
-            return update(state, {
-                isLoading: {$set: true},
-            });
-        case actionTypes.FETCH_TAPS_SUCCESS:
-            return update(state, {
-                isLoading: {$set: false},
-                pubs: {
-                    [action.pubId]: {
-                        $merge: {
-                            taps: action.taps,
-                        }
-                    }
-                }
-            });
-        case actionTypes.FETCH_TAPS_FAILURE:
-            return update(state, {
-                $merge: {
-                    isLoading: false,
-                    error: action.error,
-                },
-            });
+        // case actionTypes.FETCH_TAPS_REQUEST:
+        //     return update(state, {
+        //         isLoading: {$set: true},
+        //     });
+        // case actionTypes.FETCH_TAPS_SUCCESS:
+        //     return update(state, {
+        //         isLoading: {$set: false},
+        //         pubs: {
+        //             [action.pubId]: {
+        //                 $merge: {
+        //                     taps: action.taps,
+        //                 }
+        //             }
+        //         }
+        //     });
+        // case actionTypes.FETCH_TAPS_FAILURE:
+        //     return update(state, {
+        //         $merge: {
+        //             isLoading: false,
+        //             error: action.error,
+        //         },
+        //     });
     }
 
     return state;
