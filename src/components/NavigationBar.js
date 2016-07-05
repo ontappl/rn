@@ -7,6 +7,8 @@ import {
     StyleSheet,
 } from 'react-native';
 
+import {colors} from './styles';
+
 
 export const NavigationBar = ({title, onBackPress}) => (
     <View style={styles.container}>
@@ -27,7 +29,7 @@ export const NavigationBar = ({title, onBackPress}) => (
 const styles = StyleSheet.create({
     container: {
         height: 56,
-        backgroundColor: 'aqua',
+        backgroundColor: colors.primary,
         elevation: 4,
         flexDirection: 'row',
         alignItems: 'center',
@@ -42,6 +44,8 @@ const styles = StyleSheet.create({
     },
     title: {
         marginLeft: 16,
+        fontSize: 20,
+        color: 'rgba(0,0,0,0.87)',
     },
     titleWithLeftButton: {
         marginLeft: 20,

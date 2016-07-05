@@ -5,6 +5,8 @@ import {
     StyleSheet,
 } from 'react-native';
 
+import {colors} from './styles';
+
 
 export const Beers = ({city}) => (
     <View style={styles.wrapper}>
@@ -26,5 +28,6 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 16,
         textAlign: 'center',
+        color: colors.text.disabled,
     },
 });

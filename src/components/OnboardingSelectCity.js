@@ -2,11 +2,15 @@ import React from 'react';
 import {
     View,
     Text,
-    ActivityIndicator,
     ListView,
     TouchableNativeFeedback,
     StyleSheet,
 } from 'react-native';
+
+import {LoadingIndicator} from './LoadingIndicator';
+import {PlainListRow, PlainListSeparator} from './PlainListRow';
+import {colors} from './styles';
+
 
 export const OnboardingSelectCity = ({isLoading, citiesDataSource, onCitySelect}) => (
     <View style={styles.wrapper}>
@@ -16,32 +20,18 @@ export const OnboardingSelectCity = ({isLoading, citiesDataSource, onCitySelect}
                 Aby zacząć, wybierz miasto w którym będziesz szukać multitapów:
             </Text>
         </View>
-        {isLoading && <ActivityIndicator style={styles.activityIndicator} size="large"/>}
+        <LoadingIndicator show={isLoading}/>
         {!isLoading &&
         <ListView
             style={styles.list}
             enableEmptySections={true}
             dataSource={citiesDataSource}
-            renderRow={CityRow(onCitySelect)}
-            renderSeparator={Separator}
+            renderRow={(rowData) => <PlainListRow key={rowData.id} text={rowData.name} onPress={() => onCitySelect(rowData.id, rowData.name)}/>}
+            renderSeparator={(_, rowId) => <PlainListSeparator key={rowId}/>}
             contentContainerStyle={{paddingTop: 8}}
         />}
     </View>
 );
-
-const CityRow = (onPress) => ({id, name}) => (
-    <TouchableNativeFeedback
-        onPress={() => onPress(id)}
-        background={TouchableNativeFeedback.SelectableBackground()}
-        key={id}
-    >
-        <View style={styles.cityWrapper}>
-            <Text style={styles.cityName}>{name}</Text>
-        </View>
-    </TouchableNativeFeedback>
-);
-
-const Separator = (_, rowId) => <View key={rowId} style={styles.separator}/>;
 
 const styles = StyleSheet.create({
     wrapper: {
@@ -50,10 +40,10 @@ const styles = StyleSheet.create({
     },
     welcome: {
         elevation: 4,
-        backgroundColor: 'pink',
+        backgroundColor: colors.primary,
     },
     head: {
-        color: 'black',
+        color: colors.text.primary,
         fontWeight: 'normal',
         fontSize: 24,
         lineHeight: 32,
@@ -64,15 +54,12 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     subHead: {
-        color: 'black',
+        color: colors.text.secondary,
         fontSize: 15,
         lineHeight: 24,
         textAlign: 'center',
         marginLeft: 40,
         marginRight: 40,
-    },
-    activityIndicator: {
-        flex: 1,
     },
     list: {
         flex: 1,

@@ -6,6 +6,8 @@ import {
     StyleSheet,
 } from 'react-native';
 
+import {colors} from './styles';
+
 
 export const TabBar = ({tabs, onChangeTab}) => (
     <View style={styles.wrapper}>
@@ -16,7 +18,9 @@ export const TabBar = ({tabs, onChangeTab}) => (
 );
 
 const Button = ({title, selected, onPress}) => (
-    <TouchableNativeFeedback onPress={onPress}>
+    <TouchableNativeFeedback
+        background={TouchableNativeFeedback.Ripple(colors.accent)}
+        onPress={onPress}>
         <View style={styles.button}>
             <View style={styles.textWrapper}>
                 <Text style={styles.text}>{title}</Text>
@@ -41,7 +45,7 @@ const UNDERLINE_HEIGHT = 2;
 const styles = StyleSheet.create({
     wrapper: {
         height: BUTTON_HEIGHT,
-        backgroundColor: 'aqua',
+        backgroundColor: colors.primary,
         elevation: 4,
         flexDirection: 'row',
     },
@@ -62,12 +66,13 @@ const styles = StyleSheet.create({
     text: {
         alignItems: 'center',
         justifyContent: 'center',
+        color: colors.text.primary,
     },
     underline: {
         height: UNDERLINE_HEIGHT,
         backgroundColor: 'transparent',
     },
     underlineVisible: {
-        backgroundColor: 'black',
+        backgroundColor: colors.accent,
     }
 });

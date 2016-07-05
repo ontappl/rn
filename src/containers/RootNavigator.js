@@ -1,26 +1,33 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {
+    View,
+    StatusBar,
     NavigationExperimental,
 } from 'react-native';
 
+import {colors} from '../components';
 import * as rootNavigatorKeys from '../rootNavigatorKeys';
 import * as actions from '../actions2/rootNavigator';
 import {OnboardingSelectCity} from './OnboardingSelectCity';
 import {Home} from './Home';
 import {Pub} from './Pub';
 
+
 class RootNavigatorContainer extends React.Component {
     render() {
         const {navigationState} = this.props;
 
         return (
-            <NavigationExperimental.Transitioner
-                style={{flex: 1}}
-                navigationState={navigationState}
-                render={this._render.bind(this)}
-                onTransitionEnd={this._onTransitionEnd.bind(this)}
-            />
+            <View style={{flex: 1}}>
+                <StatusBar backgroundColor={colors.primaryDark}/>
+                <NavigationExperimental.Transitioner
+                    style={{flex: 1}}
+                    navigationState={navigationState}
+                    render={this._render.bind(this)}
+                    onTransitionEnd={this._onTransitionEnd.bind(this)}
+                />
+            </View>
         );
     }
 

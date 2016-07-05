@@ -5,6 +5,8 @@ import {
     StyleSheet,
 } from 'react-native';
 
+import {colors} from './styles';
+
 
 export const TapSummary = ({tap}) => (
     <View style={styles.tap}>
@@ -47,20 +49,20 @@ const styles = StyleSheet.create({
         padding: 16,
     },
     tapName: {
-        fontSize: 10,
-        color: 'gray',
+        fontSize: 12,
+        color: colors.text.disabled,
     },
     beerName: {
         fontSize: 18,
-        color: 'black',
+        color: colors.text.primary,
     },
     beerStyleName: {
         fontSize: 14,
-        color: '#333',
+        color: colors.text.secondary,
     },
     beerBreweryName: {
         fontSize: 14,
-        color: '#333',
+        color: colors.text.secondary,
     },
     detailsWrapper: {
         flexDirection: 'row',
@@ -72,11 +74,11 @@ const styles = StyleSheet.create({
     },
     detailsName: {
         fontSize: 12,
-        color: '#333',
+        color: colors.text.secondary,
         marginRight: 4,
     },
     detailsValue: {
         fontSize: 14,
-        color: '#333',
+        color: colors.text.secondary,
     },
 });

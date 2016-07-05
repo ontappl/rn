@@ -1,13 +1,13 @@
 import React from 'react';
 import {
     View,
-    ActivityIndicator,
     Text,
     StyleSheet,
     ListView,
 } from 'react-native';
 
 import {NavigationBar} from './NavigationBar';
+import {LoadingIndicator} from './LoadingIndicator';
 import {TapSummary} from './TapSummary';
 import {PlainListSeparator} from './PlainListRow';
 
@@ -15,7 +15,7 @@ import {PlainListSeparator} from './PlainListRow';
 export const Pub = ({isLoading, name, tapsDataSource, onBack}) => (
     <View style={styles.container}>
         <NavigationBar title={name} onBackPress={onBack}/>
-        {isLoading && <ActivityIndicator style={styles.activityIndicator} size="large"/>}
+        <LoadingIndicator show={isLoading}/>
         {!isLoading &&
         <ListView
             style={styles.list}
@@ -32,10 +32,6 @@ export const Pub = ({isLoading, name, tapsDataSource, onBack}) => (
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: 'white',
-    },
-    activityIndicator: {
         flex: 1,
     },
     list: {

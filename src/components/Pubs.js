@@ -1,18 +1,18 @@
 import React from 'react';
 import {
     View,
-    ActivityIndicator,
     Text,
     StyleSheet,
     ListView,
 } from 'react-native';
 
+import {LoadingIndicator} from './LoadingIndicator';
 import {PlainListRow, PlainListSeparator} from './PlainListRow';
 
 
 export const Pubs = ({isLoading, pubsDataSource, onPubSelect}) => (
     <View style={{flex: 1, backgroundColor: 'white'}}>
-        {isLoading && <ActivityIndicator style={styles.activityIndicator} size="large"/>}
+        <LoadingIndicator show={isLoading}/>
         {!isLoading &&
         <ListView
             style={styles.list}
@@ -28,9 +28,6 @@ export const Pubs = ({isLoading, pubsDataSource, onPubSelect}) => (
 );
 
 const styles = StyleSheet.create({
-    activityIndicator: {
-        flex: 1,
-    },
     list: {
         flex: 1,
     },

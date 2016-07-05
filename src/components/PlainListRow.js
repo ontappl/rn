@@ -6,11 +6,13 @@ import {
     StyleSheet
 } from 'react-native';
 
+import {colors} from './styles';
+
 
 export const PlainListRow = ({text, onPress}) => (
     <TouchableNativeFeedback
         onPress={onPress}
-        background={TouchableNativeFeedback.SelectableBackground()}
+        background={TouchableNativeFeedback.Ripple(colors.accent)}
     >
         <View style={styles.wrapper}>
             <Text style={styles.text}>{text}</Text>
@@ -30,9 +32,10 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 16,
+        color: colors.text.primary,
     },
     separator: {
         height: 1,
-        backgroundColor: 'lightgray',
+        backgroundColor: colors.text.dividers,
     }
 });
