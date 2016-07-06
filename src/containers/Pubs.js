@@ -12,8 +12,10 @@ import * as pubSelectors from '../selectors/pubs';
 
 class PubsContainer extends React.Component {
     componentDidMount() {
-        const {fetchPubs, selectedCity} = this.props;
-        InteractionManager.runAfterInteractions(() => fetchPubs(selectedCity));
+        const {pubs, fetchPubs, selectedCity} = this.props;
+        if (pubs.length === 0) {
+            InteractionManager.runAfterInteractions(() => fetchPubs(selectedCity));
+        }
     }
 
     render() {
@@ -27,6 +29,7 @@ const dataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2
 const mapStateToProps = (state) => ({
     selectedCity: state.app.selectedCity,
     isLoading: state.pubs.isLoading,
+    pubs: pubSelectors.sortedPubs(state, state.app.selectedCity),
     pubsDataSource: dataSource.cloneWithRows(pubSelectors.sortedPubs(state, state.app.selectedCity)),
 });
 

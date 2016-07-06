@@ -29,6 +29,8 @@ export const OnboardingSelectCity = ({isLoading, citiesDataSource, onCitySelect}
             renderRow={(rowData) => <PlainListRow key={rowData.id} text={rowData.name} onPress={() => onCitySelect(rowData.id, rowData.name)}/>}
             renderSeparator={(_, rowId) => <PlainListSeparator key={rowId}/>}
             contentContainerStyle={{paddingTop: 8}}
+            initialListSize={20}
+            pageSize={30}   
         />}
     </View>
 );

@@ -21,8 +21,8 @@ export const Pubs = ({isLoading, pubsDataSource, onPubSelect}) => (
             renderRow={(rowData) => <PlainListRow key={rowData.id} text={rowData.name} onPress={() => onPubSelect(rowData.id, rowData.name)}/>}
             renderSeparator={(_, rowId) => <PlainListSeparator key={rowId}/>}
             contentContainerStyle={{paddingTop: 8}}
-            initialListSize={10}
-            pageSize={10}
+            initialListSize={20}
+            pageSize={30}
         />}
     </View>
 );
