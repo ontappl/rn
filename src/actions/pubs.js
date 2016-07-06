@@ -1,19 +1,4 @@
-import * as actionTypes from './actionTypes';
-
-
-export const fetchCitiesRequest = () => ({
-    type: actionTypes.FETCH_CITIES_REQUEST,
-});
-
-export const fetchCitiesSuccess = (cities) => ({
-    type: actionTypes.FETCH_CITIES_SUCCESS,
-    cities,
-});
-
-export const fetchCitiesFailure = (error) => ({
-    type: actionTypes.FETCH_CITIES_FAILURE,
-    error,
-});
+import * as actionTypes from '../actionTypes/pubs';
 
 export const fetchPubsRequest = (cityId) => ({
     type: actionTypes.FETCH_PUBS_REQUEST,
@@ -29,6 +14,12 @@ export const fetchPubsSuccess = (cityId, pubs) => ({
 export const fetchPubsFailure = (error) => ({
     type: actionTypes.FETCH_PUBS_FAILURE,
     error,
+});
+
+export const selectPub = (id, name) => ({
+    type: actionTypes.SELECT_PUB,
+    id,
+    name,
 });
 
 export const fetchTapsRequest = (pubId) => ({
