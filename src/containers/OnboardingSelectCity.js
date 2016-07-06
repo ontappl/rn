@@ -27,13 +27,10 @@ class OnboardingSelectCityContainer extends React.Component {
 
 const citiesDataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
-const mapStateToProps = ({cities}) => {
-    console.log(cities);
-    return {
-        isLoading: cities.isLoading,
-        citiesDataSource: citiesDataSource.cloneWithRows(sortedCities(cities)),
-    }
-};
+const mapStateToProps = ({cities}) => ({
+    isLoading: cities.isLoading,
+    citiesDataSource: citiesDataSource.cloneWithRows(sortedCities(cities)),
+});
 
 const mapDispatchToProps = {
     fetchCities: fetchCitiesRequest,

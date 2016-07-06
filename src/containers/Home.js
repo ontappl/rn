@@ -30,16 +30,13 @@ function getSelectedScene(tabs) {
     }
 }
 
-const mapStateToProps = (state) => {
-    console.log(state);
-    return {
-        city: selectors.selectedCity(state),
-        tabs: state.homeTabs,
-    };
-};
+const mapStateToProps = (state) => ({
+    city: selectors.selectedCity(state),
+    tabs: state.homeTabs,
+});
 
 const mapDispatchToProps = {
-  changeTab: tabsActions.changeTab,
+    changeTab: tabsActions.changeTab,
 };
 
 export const Home = connect(mapStateToProps, mapDispatchToProps)(HomeContainer);

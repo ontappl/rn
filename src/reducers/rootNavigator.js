@@ -13,8 +13,6 @@ const initialState = {
 };
 
 export const reducer = (state = initialState, action) => {
-    console.log(state, action);
-
     switch (action.type) {
         case actionTypes.PUSH: {
             return NavigationStateUtils.push(state, action.newState);

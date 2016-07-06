@@ -13,7 +13,6 @@ export function* saga() {
 }
 
 function* pushHomeScene() {
-    console.log('pushHomeScene');
     yield put(rootNavigatorActions.push(rootNavigatorKeys.HOME));
 }
 
