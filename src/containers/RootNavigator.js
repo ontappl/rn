@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {
+    BackAndroid,
     View,
     StatusBar,
     NavigationExperimental,
@@ -15,6 +16,14 @@ import {Pub} from './Pub';
 
 
 class RootNavigatorContainer extends React.Component {
+    componentDidMount() {
+        BackAndroid.addEventListener('hardwareBackPress', () => {
+            console.log('lol');
+            this.props.pop('BackAndroid');
+            return true;
+        });
+    }
+
     render() {
         const {navigationState} = this.props;
 
@@ -63,18 +72,9 @@ const mapStateToProps = ({rootNavigator}) => ({
     navigationState: rootNavigator,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-    onNavigate: action => {
-        const isBackFromOverlay = action.type === 'BackAction';
-        const isBackFromCard = action.type === NavigationExperimental.Card.CardStackPanResponder.Actions.BACK.type;
-        if (isBackFromOverlay || isBackFromCard) {
-            dispatch(navigationActions.pop());
-        } else {
-            dispatch(navigationActions.push(action));
-        }
-    },
-    navigationPop: (source) => dispatch(navigationActions.pop(source)),
-    resetOnCurrentScene: () => dispatch(actions.resetOnCurrentScene()),
-});
+const mapDispatchToProps = {
+    pop: actions.pop,
+    resetOnCurrentScene: actions.resetOnCurrentScene,
+};
 
 export const RootNavigator = connect(mapStateToProps, mapDispatchToProps)(RootNavigatorContainer);

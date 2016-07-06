@@ -22,11 +22,7 @@ export const reducer = (state = initialState, action) => {
                 BackAndroid.exitApp();
                 return state;
             }
-            if (state.index === 0 || state.routes.length === 1) {
-                return state;
-            }
-            const newState = {...state, title: state.routes[state.index - 1].title};
-            return NavigationStateUtils.pop(newState);
+            return NavigationStateUtils.pop(state);
         }
         case actionTypes.RESET_ON_CURRENT_SCENE: {
             return NavigationStateUtils.reset(state, [state.routes[state.index]], 0);
