@@ -2,7 +2,7 @@ import {BackAndroid} from 'react-native';
 import * as NavigationStateUtils from 'NavigationStateUtils';
 
 import * as rootNavigatorKeys from '../rootNavigatorKeys';
-import * as actionTypes from '../actionTypes2/rootNavigator';
+import * as actionTypes from '../actionTypes/rootNavigator';
 
 
 const initialState = {

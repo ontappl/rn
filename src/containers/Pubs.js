@@ -6,7 +6,7 @@ import {
 import {connect} from 'react-redux';
 
 import {Pubs as PubsComponent} from '../components';
-import * as pubActions from '../actions2/pubs';
+import * as pubActions from '../actions/pubs';
 import * as pubSelectors from '../selectors/pubs';
 
 

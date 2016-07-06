@@ -6,8 +6,8 @@ import {
 } from 'react-native';
 
 import {OnboardingSelectCity as OnboardingSelectCityComponent} from '../components';
-import {fetchCitiesRequest} from '../actions';
-import {selectCity} from '../actions2/onboarding';
+import {fetchCitiesRequest} from '../actions/cities';
+import {selectCity} from '../actions/onboarding';
 import {sortedCities} from '../selectors/cities';
 
 

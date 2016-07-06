@@ -1,6 +1,6 @@
 import update from 'react-addons-update';
 
-import * as actionTypes from '../actionTypes2/pubs';
+import * as actionTypes from '../actionTypes/pubs';
 
 
 const initialState = {

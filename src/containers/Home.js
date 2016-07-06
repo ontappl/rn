@@ -5,7 +5,7 @@ import {Home as HomeComponent} from '../components';
 import {Pubs} from './Pubs';
 import {Beers} from './Beers';
 import * as selectors from '../selectors/cities';
-import * as tabsActions from '../actions2/homeTabs';
+import * as tabsActions from '../actions/homeTabs';
 
 
 class HomeContainer extends React.Component {

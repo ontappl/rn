@@ -1,4 +1,4 @@
-import * as onboardingActionTypes from '../actionTypes2/onboarding';
+import * as onboardingActionTypes from '../actionTypes/onboarding';
 
 const initialState = {
     selectedCity: null,

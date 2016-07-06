@@ -1,4 +1,4 @@
-import * as actionTypes from '../actionTypes2/pubs';
+import * as actionTypes from '../actionTypes/pubs';
 
 export const fetchPubsRequest = (cityId) => ({
     type: actionTypes.FETCH_PUBS_REQUEST,

@@ -1,4 +1,4 @@
-import * as actionTypes from '../actionTypes2/onboarding';
+import * as actionTypes from '../actionTypes/onboarding';
 
 
 export const selectCity = (cityId) => ({

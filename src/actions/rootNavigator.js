@@ -1,4 +1,4 @@
-import * as actionTypes from '../actionTypes2/rootNavigator';
+import * as actionTypes from '../actionTypes/rootNavigator';
 
 
 export const push = (state) => ({

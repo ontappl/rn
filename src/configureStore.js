@@ -1,8 +1,8 @@
 import createSagaMiddleware from 'redux-saga';
 import {createStore, applyMiddleware} from 'redux';
 
-import {reducer} from './reducer';
-import {saga} from './saga';
+import {reducer} from './reducers';
+import {saga} from './sagas';
 import {middleware as analyticsMiddleware} from './analytics';
 
 

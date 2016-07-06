@@ -1,9 +1,9 @@
 import { takeLatest } from 'redux-saga';
 import { fork, put, call } from 'redux-saga/effects';
 
-import * as onboardingActionTypes from '../actionTypes2/onboarding';
-import * as rootNavigatorActions from '../actions2/rootNavigator';
-import * as pubsActionTypes from '../actionTypes2/pubs';
+import * as onboardingActionTypes from '../actionTypes/onboarding';
+import * as rootNavigatorActions from '../actions/rootNavigator';
+import * as pubsActionTypes from '../actionTypes/pubs';
 import * as rootNavigatorKeys from '../rootNavigatorKeys';
 
 

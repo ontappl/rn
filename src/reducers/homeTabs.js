@@ -1,4 +1,4 @@
-import * as actionTypes from '../actionTypes2/homeTabs';
+import * as actionTypes from '../actionTypes/homeTabs';
 
 
 const tabs = [

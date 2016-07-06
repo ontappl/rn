@@ -8,8 +8,8 @@ import {
 
 import * as rootNavigatorSelectors from '../selectors/rootNavigator';
 import * as pubsSelectors from '../selectors/pubs';
-import * as pubsActions from '../actions2/pubs';
-import * as rootNavigatorActions from '../actions2/rootNavigator';
+import * as pubsActions from '../actions/pubs';
+import * as rootNavigatorActions from '../actions/rootNavigator';
 import {Pub as PubComponent} from '../components';
 
 
