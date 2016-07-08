@@ -7,10 +7,12 @@ import {reducer} from './reducers';
 import {saga} from './sagas';
 import {middleware as analyticsMiddleware} from './analytics';
 import * as onboardingActionTypes from './actionTypes/onboarding';
+import * as appActionTypes from './actionTypes/app';
 
 
 const actionWhitelist = [
     onboardingActionTypes.SELECT_CITY,
+    appActionTypes.RESET,
 ];
 
 const storageEngine = createStorageEngine('persistent-storage');

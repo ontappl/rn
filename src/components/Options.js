@@ -10,7 +10,7 @@ import {NavigationBar} from './NavigationBar';
 import {colors} from './styles';
 
 
-export const Options = ({onBack, onOptionsPress}) => (
+export const Options = ({onBack, onResetCityPress}) => (
     <View style={styles.container}>
         <NavigationBar
             title="Ustawienia"
@@ -18,7 +18,7 @@ export const Options = ({onBack, onOptionsPress}) => (
         />
         <View style={styles.spacer}/>
         <TouchableNativeFeedback
-            onPress={onOptionsPress}
+            onPress={onResetCityPress}
             background={TouchableNativeFeedback.Ripple(colors.accent)}
         >
             <View style={styles.buttonContainer}>
