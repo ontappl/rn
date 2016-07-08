@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-    AppRegistry,
-    Text,
-} from 'react-native';
+import {AppRegistry} from 'react-native';
 import {Provider} from 'react-redux';
 import * as storage from 'redux-storage';
 import createStorageEngine from 'redux-storage-engine-reactnativeasyncstorage';
@@ -10,6 +7,7 @@ import createStorageEngine from 'redux-storage-engine-reactnativeasyncstorage';
 import {initCrashlytics} from './src/analytics';
 import {configureStore} from './src/configureStore';
 import {RootNavigator} from './src/containers';
+import {SplashScreen} from './src/components';
 
 
 initCrashlytics();
@@ -25,12 +23,12 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        load(store).then((state2) => this.setState({stateIsLoaded: true}));
+        load(store).then(() => this.setState({stateIsLoaded: true}));
     }
 
     render() {
         if (!this.state.stateIsLoaded) {
-            return <Text>LOADING</Text>;
+            return <SplashScreen/>;
         } else {
             return (
                 <Provider store={store}>
