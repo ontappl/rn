@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
     },
     beerName: {
         fontSize: 18,
+        fontFamily: 'roboto_medium',
         color: colors.text.primary,
     },
     beerStyleName: {

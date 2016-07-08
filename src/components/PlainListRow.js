@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 16,
+        fontFamily: 'roboto_regular',
         color: colors.text.primary,
     },
     separator: {

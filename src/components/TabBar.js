@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         fontSize: 14,
+        fontFamily: 'roboto_medium',
         color: colors.text.secondary,
     },
     textSelected: {

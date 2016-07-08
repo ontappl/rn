@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         fontSize: 16,
+        fontFamily: 'roboto_regular',
         color: colors.text.primary,
     },
 });

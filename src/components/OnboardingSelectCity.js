@@ -46,8 +46,8 @@ const styles = StyleSheet.create({
     },
     head: {
         color: colors.text.primary,
-        fontWeight: 'normal',
         fontSize: 24,
+        fontFamily: 'roboto_medium',
         lineHeight: 32,
         textAlign: 'center',
         marginLeft: 16,
@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
     subHead: {
         color: colors.text.secondary,
         fontSize: 15,
+        fontFamily: 'roboto_regular',
         lineHeight: 24,
         textAlign: 'center',
         marginLeft: 40,

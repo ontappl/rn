@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
         flex: 1,
         marginLeft: 16,
         fontSize: 20,
-        fontWeight: 'bold',
+        fontFamily: 'roboto_medium',
         color: colors.text.primary,
     },
     titleWithLeftButton: {
