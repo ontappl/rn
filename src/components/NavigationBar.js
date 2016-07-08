@@ -17,7 +17,7 @@ export const NavigationBar = ({title, onBackPress}) => (
             <View style={styles.button}>
                 <Image
                     style={styles.buttonImage}
-                    source={require('../img/icon-arrow-back-white.png')}
+                    source={require('../img/icon-arrow-back-primary.png')}
                 />
             </View>
         </TouchableNativeFeedback>
