@@ -23,7 +23,7 @@ const Button = ({title, selected, onPress}) => (
         onPress={onPress}>
         <View style={styles.button}>
             <View style={styles.textWrapper}>
-                <Text style={styles.text}>{title}</Text>
+                <Text style={[styles.text, selected && styles.textSelected]}>{title}</Text>
             </View>
             <Underline visible={selected}/>
         </View>
@@ -66,6 +66,10 @@ const styles = StyleSheet.create({
     text: {
         alignItems: 'center',
         justifyContent: 'center',
+        fontSize: 14,
+        color: colors.text.secondary,
+    },
+    textSelected: {
         color: colors.text.primary,
     },
     underline: {
