@@ -1,5 +1,6 @@
 import {BackAndroid} from 'react-native';
 import * as NavigationStateUtils from 'NavigationStateUtils';
+import { LOAD } from 'redux-storage';
 
 import * as rootNavigatorKeys from '../rootNavigatorKeys';
 import * as actionTypes from '../actionTypes/rootNavigator';
@@ -14,6 +15,19 @@ const initialState = {
 
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
+        case LOAD: {
+            const alreadySelectedCity = action.payload.app && !!action.payload.app.selectedCity;
+            if (alreadySelectedCity) {
+                return {
+                    ...state,
+                    routes: [
+                        {key: rootNavigatorKeys.HOME},
+                    ],
+                };
+            } else {
+                return state;
+            }
+        }
         case actionTypes.PUSH: {
             return NavigationStateUtils.push(state, action.newState);
         }

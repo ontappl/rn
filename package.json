@@ -14,7 +14,9 @@
     "react-native-fabric-crashlytics": "^0.1.2",
     "react-redux": "^4.4.5",
     "redux": "^3.5.2",
-    "redux-saga": "^0.10.4"
+    "redux-saga": "^0.10.4",
+    "redux-storage": "^4.0.1",
+    "redux-storage-engine-reactnativeasyncstorage": "^1.0.1"
   },
   "devDependencies": {
     "eslint": "^2.11.1",

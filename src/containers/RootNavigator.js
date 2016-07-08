@@ -19,7 +19,6 @@ import {Options} from './Options';
 class RootNavigatorContainer extends React.Component {
     componentDidMount() {
         BackAndroid.addEventListener('hardwareBackPress', () => {
-            console.log('lol');
             this.props.pop('BackAndroid');
             return true;
         });
