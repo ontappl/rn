@@ -59,7 +59,8 @@ const styles = StyleSheet.create({
         flex: 1,
         marginLeft: 16,
         fontSize: 20,
-        color: 'rgba(0,0,0,0.87)',
+        fontWeight: 'bold',
+        color: colors.text.primary,
     },
     titleWithLeftButton: {
         marginLeft: 20,
