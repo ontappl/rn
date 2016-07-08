@@ -13,12 +13,12 @@ import * as actions from '../actions/rootNavigator';
 import {OnboardingSelectCity} from './OnboardingSelectCity';
 import {Home} from './Home';
 import {Pub} from './Pub';
+import {Options} from './Options';
 
 
 class RootNavigatorContainer extends React.Component {
     componentDidMount() {
         BackAndroid.addEventListener('hardwareBackPress', () => {
-            console.log('lol');
             this.props.pop('BackAndroid');
             return true;
         });
@@ -50,6 +50,8 @@ class RootNavigatorContainer extends React.Component {
                 return <Home key={routeKey}/>;
             case rootNavigatorKeys.PUB:
                 return <Pub key={routeKey}/>;
+            case rootNavigatorKeys.OPTIONS:
+                return <Options key={routeKey}/>;
             default:
                 throw `Unexpected scene key ${routeKey}`
         }

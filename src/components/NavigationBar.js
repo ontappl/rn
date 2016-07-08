@@ -10,19 +10,32 @@ import {
 import {colors} from './styles';
 
 
-export const NavigationBar = ({title, onBackPress}) => (
+export const NavigationBar = ({title, onBackPress, rightButtonImage, onRightButtonPress}) => (
     <View style={styles.container}>
         {onBackPress &&
         <TouchableNativeFeedback onPress={onBackPress}>
             <View style={styles.button}>
                 <Image
                     style={styles.buttonImage}
-                    source={require('../img/icon-arrow-back-white.png')}
+                    source={require('../img/icon-arrow-back-primary.png')}
                 />
             </View>
         </TouchableNativeFeedback>
         }
-        <Text style={[styles.title, onBackPress && styles.titleWithLeftButton]}>{title}</Text>
+        <Text
+            style={[styles.title, onBackPress && styles.titleWithLeftButton]}
+            lineBreakMode="tail"
+            numberOfLines={1}
+        >
+            {title}
+        </Text>
+        {rightButtonImage && onRightButtonPress &&
+        <TouchableNativeFeedback onPress={onRightButtonPress}>
+            <View style={styles.button}>
+                <Image style={styles.buttonImage} source={rightButtonImage}/>
+            </View>
+        </TouchableNativeFeedback>
+        }
     </View>
 );
 
@@ -43,6 +56,7 @@ const styles = StyleSheet.create({
         height: 24,
     },
     title: {
+        flex: 1,
         marginLeft: 16,
         fontSize: 20,
         color: 'rgba(0,0,0,0.87)',
