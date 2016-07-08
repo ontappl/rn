@@ -6,16 +6,19 @@ import {Pubs} from './Pubs';
 import {Beers} from './Beers';
 import * as selectors from '../selectors/cities';
 import * as tabsActions from '../actions/homeTabs';
+import * as appActions from '../actions/app';
 
 
 class HomeContainer extends React.Component {
     render() {
-        const selectedScene = getSelectedScene(this.props.tabs);
+        const {city, tabs, changeTab, showOptions} = this.props;
+        const selectedScene = getSelectedScene(tabs);
         return <HomeComponent
-            city={this.props.city}
-            tabs={this.props.tabs}
-            onChangeTab={this.props.changeTab}
+            city={city}
+            tabs={tabs}
+            onChangeTab={changeTab}
             selectedScene={selectedScene}
+            onOptionsPress={showOptions}
         />;
     }
 }
@@ -37,6 +40,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
     changeTab: tabsActions.changeTab,
+    showOptions: appActions.showOptions,
 };
 
 export const Home = connect(mapStateToProps, mapDispatchToProps)(HomeContainer);
