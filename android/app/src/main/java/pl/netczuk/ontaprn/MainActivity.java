@@ -2,8 +2,8 @@ package pl.netczuk.ontaprn;
 
 import android.os.Bundle;
 
-import com.facebook.react.ReactActivity;
 import com.crashlytics.android.Crashlytics;
+import com.facebook.react.ReactActivity;
 
 import io.fabric.sdk.android.Fabric;
 

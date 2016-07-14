@@ -1,9 +1,10 @@
-// import {Answers} from 'react-native-fabric';
+import {Answers} from 'react-native-fabric';
 
 // import * as navigationActionTypes from '../navigation/actionTypes';
 
 
 export const middleware = () => (next) => (action) => {
+    // Crashlytics.crash();
     // switch (action.type) {
     //     case navigationActionTypes.PUSH: {
     //         const {newState} = action;
