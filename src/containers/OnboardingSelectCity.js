@@ -20,8 +20,8 @@ class OnboardingSelectCityContainer extends React.Component {
         return <OnboardingSelectCityComponent {...this.props} onCitySelect={this._onCitySelect.bind(this)}/>;
     }
 
-    _onCitySelect(id) {
-        this.props.selectCity(id);
+    _onCitySelect(id, name) {
+        this.props.selectCity(id, name);
     }
 }
 
