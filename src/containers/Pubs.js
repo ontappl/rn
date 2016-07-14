@@ -19,8 +19,13 @@ class PubsContainer extends React.Component {
     }
 
     render() {
-        const {selectPub} = this.props;
-        return <PubsComponent {...this.props} onPubSelect={(id, name) => selectPub(id, name)}/>;
+        const {selectPub, togglePubFavorite} = this.props;
+        return (
+            <PubsComponent
+                {...this.props}
+                onPubSelect={(id, name) => selectPub(id, name)}
+                onTogglePubFavorite={(id) => togglePubFavorite(id)}
+            />);
     }
 }
 
@@ -36,6 +41,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
     fetchPubs: pubActions.fetchPubsRequest,
     selectPub: pubActions.selectPub,
+    togglePubFavorite: pubActions.togglePubFavorite,
 };
 
 export const Pubs = connect(mapStateToProps, mapDispatchToProps)(PubsContainer);

@@ -21,7 +21,7 @@ export const pubs = (state = initialState, action) => {
         case actionTypes.FETCH_PUBS_SUCCESS:
             const newPubs = action.pubs
                 .reduce(
-                    (pubs, curr) => ({...pubs, [curr.id]: {...curr, city: action.cityId}}),
+                    (pubs, curr) => ({...pubs, [curr.id]: {...curr, city: action.cityId, favorited: false}}),
                     {}
                 );
             return update(state, {
@@ -34,6 +34,15 @@ export const pubs = (state = initialState, action) => {
                     isLoading: false,
                     error: action.error,
                 },
+            });
+
+        case actionTypes.TOGGLE_FAVORITE_PUB:
+            return update(state, {
+                pubs: {
+                    [action.id]: {
+                        favorited: {$set: !state.pubs[action.id].favorited},
+                    }
+                }
             });
 
         case actionTypes.FETCH_TAPS_REQUEST:

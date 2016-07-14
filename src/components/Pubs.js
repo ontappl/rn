@@ -7,10 +7,11 @@ import {
 } from 'react-native';
 
 import {LoadingIndicator} from './LoadingIndicator';
-import {PlainListRow, PlainListSeparator} from './PlainListRow';
+import {PubRow} from './PubRow';
+import {PlainListSeparator} from './PlainListRow';
 
 
-export const Pubs = ({isLoading, pubsDataSource, onPubSelect}) => (
+export const Pubs = ({isLoading, pubsDataSource, onPubSelect, onTogglePubFavorite}) => (
     <View style={{flex: 1, backgroundColor: 'white'}}>
         <LoadingIndicator show={isLoading}/>
         {!isLoading &&
@@ -18,7 +19,15 @@ export const Pubs = ({isLoading, pubsDataSource, onPubSelect}) => (
             style={styles.list}
             enableEmptySections={true}
             dataSource={pubsDataSource}
-            renderRow={(rowData) => <PlainListRow key={rowData.id} text={rowData.name} onPress={() => onPubSelect(rowData.id, rowData.name)}/>}
+            renderRow={(rowData) =>
+                <PubRow
+                    key={rowData.id}
+                    name={rowData.name}
+                    onPress={() => onPubSelect(rowData.id, rowData.name)}
+                    isFavourited={rowData.favorited}
+                    onToggleFavorite={() => onTogglePubFavorite(rowData.id)}
+                />
+            }
             renderSeparator={(_, rowId) => <PlainListSeparator key={rowId}/>}
             contentContainerStyle={{paddingTop: 8}}
             initialListSize={20}

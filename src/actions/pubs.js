@@ -22,6 +22,11 @@ export const selectPub = (id, name) => ({
     name,
 });
 
+export const togglePubFavorite = (id) => ({
+    type: actionTypes.TOGGLE_FAVORITE_PUB,
+    id,
+});
+
 export const fetchTapsRequest = (pubId) => ({
     type: actionTypes.FETCH_TAPS_REQUEST,
     pubId,

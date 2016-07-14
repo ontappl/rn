@@ -5,6 +5,7 @@ import * as homeTabsActionTypes from '../actionTypes/homeTabs';
 import * as homeTabsSelectors from '../selectors/homeTabs';
 import * as onboardingActionTypes from '../actionTypes/onboarding';
 import * as pubsActionTypes from '../actionTypes/pubs';
+import * as pubsSelectors from '../selectors/pubs';
 
 
 export const middleware = (store) => (next) => (action) => {
@@ -36,6 +37,14 @@ export const middleware = (store) => (next) => (action) => {
         case pubsActionTypes.SELECT_PUB: {
             Answers.logContentView('Pub', action.name, action.id);
             console.info('Pub', action.name, action.id);
+            break;
+        }
+
+        case pubsActionTypes.TOGGLE_FAVORITE_PUB: {
+            const pub = pubsSelectors.pub(store.getState(), action.id);
+            const name = `Pub ${pub.favorited ? 'unfavourite' : 'favorite'}`;
+            Answers.logCustom(name, {name: pub.name, id: pub.id});
+            console.info(name, {name: pub.name, id: pub.id});
             break;
         }
     }
