@@ -6,6 +6,7 @@ import * as actionTypes from '../actionTypes/pubs';
 const initialState = {
     isLoading: false,
     pubs: {},
+    favorites: [],
     error: null,
 };
 
@@ -21,7 +22,7 @@ export const pubs = (state = initialState, action) => {
         case actionTypes.FETCH_PUBS_SUCCESS:
             const newPubs = action.pubs
                 .reduce(
-                    (pubs, curr) => ({...pubs, [curr.id]: {...curr, city: action.cityId, favorited: false}}),
+                    (pubs, curr) => ({...pubs, [curr.id]: {...curr, city: action.cityId}}),
                     {}
                 );
             return update(state, {
@@ -36,14 +37,14 @@ export const pubs = (state = initialState, action) => {
                 },
             });
 
-        case actionTypes.TOGGLE_FAVORITE_PUB:
+        case actionTypes.TOGGLE_FAVORITE_PUB: {
+            const {id} = action;
+            const index = state.favorites.indexOf(id);
+
             return update(state, {
-                pubs: {
-                    [action.id]: {
-                        favorited: {$set: !state.pubs[action.id].favorited},
-                    }
-                }
+                favorites: index === -1 ? {$push: [id]} : {$splice: [[index, 1]]}
             });
+        }
 
         case actionTypes.FETCH_TAPS_REQUEST:
             return update(state, {

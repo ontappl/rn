@@ -1,13 +1,24 @@
-export function sortedPubs({pubs}, cityId) {
-    return Object.keys(pubs.pubs)
-        .map((i) => pubs.pubs[i])
-        .filter((p) => p.city === cityId)
-        .sort((a, b) => a.name.localeCompare(b.name));
-}
+const pubsStore = (state) => state.pubs;
 
 export function taps(state, pubId) {
     const taps = state.pubs.pubs[pubId].taps;
     return taps ? taps : [];
 }
 
-export const pub = (state, pubId) => state.pubs.pubs[pubId];
+const pubs = (state) => pubsStore(state).pubs;
+
+export const pub = (state, pubId) => ({
+    ...pubs(state)[pubId],
+    favorited: favorited(state, pubId),
+});
+
+const favorites = (state) => pubsStore(state).favorites;
+
+const favorited = (state, pubId) => favorites(state).indexOf(pubId) !== -1;
+
+export const sortedPubs = (state, cityId) => {
+    return Object.keys(pubs(state))
+        .map((id) => pub(state, id))
+        .filter((p) => p.city === cityId)
+        .sort((a, b) => a.name.localeCompare(b.name));
+};
