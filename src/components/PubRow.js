@@ -17,12 +17,12 @@ export const PubRow = ({name, onPress, isFavourited, onToggleFavorite}) => (
         background={TouchableNativeFeedback.Ripple(colors.accent)}
     >
         <View style={styles.container}>
-            <TouchableOpacity onPress={onToggleFavorite}>
+            <TouchableOpacity onPress={onToggleFavorite} style={styles.favoriteButton}>
                 {isFavourited &&
-                <Image style={styles.favourite} source={require('../img/icon-favorite-full-accent.png')}/>
+                <Image style={styles.favoriteImage} source={require('../img/icon-favorite-full-accent.png')}/>
                 }
                 {!isFavourited &&
-                <Image style={styles.favourite} source={require('../img/icon-favorite-empty-secondary.png')}/>
+                <Image style={styles.favoriteImage} source={require('../img/icon-favorite-empty-secondary.png')}/>
                 }
             </TouchableOpacity>
             <Text style={styles.name}>{name}</Text>
@@ -34,18 +34,21 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'row',
-        paddingLeft: 16,
+        paddingLeft: 4,
         paddingRight: 16,
         height: 48,
         alignItems: 'center',
     },
-    favourite: {
+    favoriteButton: {
+        padding: 12,
+    },
+    favoriteImage: {
         width: 24,
         height: 24,
     },
     name: {
         flex: 1,
-        marginLeft: 32,
+        marginLeft: 20,
         fontSize: 16,
         fontFamily: 'roboto_regular',
         color: colors.text.primary,
