@@ -22,3 +22,5 @@ export const sortedPubs = (state, cityId) => {
         .filter((p) => p.city === cityId)
         .sort((a, b) => a.name.localeCompare(b.name));
 };
+
+export const showLoadingOnPubs = (state) => pubsStore(state).isLoading && pubs(state).length === 0;

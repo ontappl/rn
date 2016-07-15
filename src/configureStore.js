@@ -6,17 +6,22 @@ import createStorageEngine from 'redux-storage-engine-reactnativeasyncstorage';
 import {reducer} from './reducers';
 import {saga} from './sagas';
 import {middleware as analyticsMiddleware} from './analytics';
-import * as onboardingActionTypes from './actionTypes/onboarding';
-import * as appActionTypes from './actionTypes/app';
+
+import * as citiesActionTypes from './actionTypes/cites';
+import * as pubsActionTypes from './actionTypes/pubs';
+import * as rootNavigatorActionTypes from './actionTypes/rootNavigator';
 
 
-const actionWhitelist = [
-    onboardingActionTypes.SELECT_CITY,
-    appActionTypes.RESET,
+const actionBlackList = [
+    citiesActionTypes.FETCH_CITIES_REQUEST,
+    pubsActionTypes.FETCH_PUBS_REQUEST,
+    pubsActionTypes.FETCH_TAPS_REQUEST,
+    rootNavigatorActionTypes.PUSH,
+    rootNavigatorActionTypes.POP,
 ];
 
 const storageEngine = createStorageEngine('persistent-storage');
-const storageMiddleware = storage.createMiddleware(storageEngine, [], actionWhitelist);
+const storageMiddleware = storage.createMiddleware(storageEngine, actionBlackList);
 
 export function configureStore() {
     const sagaMiddleWare = createSagaMiddleware();
