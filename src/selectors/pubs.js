@@ -20,7 +20,12 @@ export const sortedPubs = (state, cityId) => {
     return Object.keys(pubs(state))
         .map((id) => pub(state, id))
         .filter((p) => p.city === cityId)
-        .sort((a, b) => a.name.localeCompare(b.name));
+        .sort((a, b) => {
+            if (a.favorited !== b.favorited) {
+                return a.favorited > b.favorited ? -1 : 1;
+            }
+            return a.name.localeCompare(b.name)
+        });
 };
 
 export const showLoadingOnPubs = (state) => pubsStore(state).isLoading && pubs(state).length === 0;
