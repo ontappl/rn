@@ -2,8 +2,8 @@ import * as actionTypes from '../actionTypes/homeTabs';
 
 
 const tabs = [
-    {key: 'HOME_TAB_PUBS', title: 'Puby'},
-    {key: 'HOME_TAB_BEERS', title: 'Piwa'},
+    {key: 'HOME_TAB_PUBS', title: 'PUBY'},
+    {key: 'HOME_TAB_BEERS', title: 'PIWA'},
 ];
 
 const initialState = {
