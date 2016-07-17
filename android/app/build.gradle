@@ -105,8 +105,8 @@ android {
         applicationId "pl.netczuk.ontaprn"
         minSdkVersion 21
         targetSdkVersion 23
-        versionCode 401048587
-        versionName "0.2.1-dev"
+        versionCode 401048588
+        versionName "0.2.1"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
