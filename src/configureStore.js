@@ -2,6 +2,7 @@ import createSagaMiddleware from 'redux-saga';
 import {createStore, applyMiddleware} from 'redux';
 import * as storage from 'redux-storage';
 import createStorageEngine from 'redux-storage-engine-reactnativeasyncstorage';
+import filter from 'redux-storage-decorator-filter'
 
 import {reducer} from './reducers';
 import {saga} from './sagas';
@@ -24,7 +25,12 @@ const actionBlackList = [
 ];
 
 const storageEngine = createStorageEngine('persistent-storage');
-const storageMiddleware = storage.createMiddleware(storageEngine, actionBlackList);
+const filteredEngine = filter(
+    storageEngine,
+    ['app', 'entities'],
+);
+
+const storageMiddleware = storage.createMiddleware(filteredEngine, actionBlackList);
 
 export function configureStore() {
     const sagaMiddleWare = createSagaMiddleware();

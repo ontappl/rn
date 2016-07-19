@@ -11,8 +11,6 @@ const initialState = {
 };
 
 export const reducer = (state = initialState, action) => {
-    console.log(state);
-
     switch (action.type) {
         case cityActions.FETCH_CITIES_SUCCESS: {
             const newCities = action.cities.reduce(
