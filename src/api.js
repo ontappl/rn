@@ -7,6 +7,35 @@ const headers = new Headers({
     'Api-Key': config.apiKey,
 });
 
+function throwError(response) {
+    const {url, status} = response;
+    return response
+        .json()
+        .then(
+            (body) => {
+                throw new ApiError('Api error', {url, status, body})
+            },
+            () => {
+                throw new ApiError('Api error', {url, status})
+            }
+        );
+}
+
+export class ApiError extends Error {
+    constructor(message, data) {
+        super(message);
+        this.name = this.constructor.name;
+        this.data = data;
+        // better node stacktaces, more here:
+        // http://stackoverflow.com/a/32749533/1035552
+        if (typeof Error.captureStackTrace === 'function') {
+            Error.captureStackTrace(this, this.constructor);
+        } else {
+            this.stack = (new Error(message)).stack;
+        }
+    }
+}
+
 export const fetchCities = () => {
     const options = {
         method: 'GET',
@@ -17,8 +46,7 @@ export const fetchCities = () => {
             if (response.ok) {
                 return response.json();
             } else {
-                const message = `Houston we have problem: ${response.status}, ${response.url}`;
-                throw new Error(message);
+                return throwError(response);
             }
         });
 };
@@ -33,8 +61,7 @@ export const fetchPubs = (cityId) => {
             if (response.ok) {
                 return response.json();
             } else {
-                const message = `Houston we have problem: ${response.status}, ${response.url}`;
-                throw new Error(message);
+                return throwError(response);
             }
         });
 };
@@ -49,8 +76,7 @@ export const fetchTaps = (pubId) => {
             if (response.ok) {
                 return response.json();
             } else {
-                const message = `Houston we have problem: ${response.status}, ${response.url}`;
-                throw new Error(message);
+                return throwError(response);
             }
         });
 };

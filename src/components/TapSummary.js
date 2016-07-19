@@ -11,7 +11,8 @@ import {colors} from './styles';
 export const TapSummary = ({tap}) => (
     <View style={styles.tap}>
         <Text style={styles.tapName}>{tap.tapName}</Text>
-        <Beer beer={tap.beer}/>
+        {tap.beer && <Beer beer={tap.beer}/>}
+        {!tap.beer && <Text style={styles.emptyTap}>Pusty kran</Text>}
         <Prices prices={tap.prices}/>
     </View>
 );
@@ -51,6 +52,11 @@ const styles = StyleSheet.create({
     tapName: {
         fontSize: 12,
         color: colors.text.disabled,
+    },
+    emptyTap: {
+        fontSize: 16,
+        fontFamily: 'roboto_regular',
+        color: colors.text.secondary,
     },
     beerName: {
         fontSize: 18,

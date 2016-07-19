@@ -1,6 +1,7 @@
-import { takeLatest } from 'redux-saga';
-import { fork, put, call } from 'redux-saga/effects';
+import {takeLatest} from 'redux-saga';
+import {fork, put, call} from 'redux-saga/effects';
 
+import {logError} from '../logger';
 import * as actionTypes from '../actionTypes/pubs';
 import * as actions from '../actions/pubs';
 import * as api from '../api';
@@ -15,7 +16,7 @@ function* fetchPubs(action) {
         const pubs = yield call(api.fetchPubs, action.cityId);
         yield put(actions.fetchPubsSuccess(action.cityId, pubs));
     } catch (error) {
-        console.error(error);
+        logError(error);
         yield put(actions.fetchPubsFailure(error));
     }
 }
@@ -25,7 +26,7 @@ function* fetchTaps(action) {
         const taps = yield call(api.fetchTaps, action.pubId);
         yield put(actions.fetchTapsSuccess(action.pubId, taps));
     } catch (error) {
-        console.error(error);
+        logError(error);
         yield put(actions.fetchTapsFailure(error));
     }
 }

@@ -14,8 +14,11 @@ import * as rootNavigatorActionTypes from './actionTypes/rootNavigator';
 
 const actionBlackList = [
     citiesActionTypes.FETCH_CITIES_REQUEST,
+    citiesActionTypes.FETCH_CITIES_FAILURE,
     pubsActionTypes.FETCH_PUBS_REQUEST,
+    pubsActionTypes.FETCH_PUBS_FAILURE,
     pubsActionTypes.FETCH_TAPS_REQUEST,
+    pubsActionTypes.FETCH_TAPS_FAILURE,
     rootNavigatorActionTypes.PUSH,
     rootNavigatorActionTypes.POP,
 ];
