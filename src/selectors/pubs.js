@@ -1,20 +1,21 @@
 const pubsStore = (state) => state.pubs;
 
 export function taps(state, pubId) {
-    const taps = state.pubs.pubs[pubId].taps;
+    const pubObject = pub(state, pubId);
+    const taps = pubObject.taps;
     return taps ? taps : [];
 }
-
-const pubs = (state) => pubsStore(state).pubs;
 
 export const pub = (state, pubId) => ({
     ...pubs(state)[pubId],
     favorited: favorited(state, pubId),
 });
 
-const favorites = (state) => pubsStore(state).favorites;
+const pubs = (state) => state.entities.pubs;
 
 const favorited = (state, pubId) => favorites(state).indexOf(pubId) !== -1;
+
+const favorites = (state) => state.entities.favoritedPubs;
 
 export const sortedPubs = (state, cityId) => {
     return Object.keys(pubs(state))
@@ -28,4 +29,4 @@ export const sortedPubs = (state, cityId) => {
         });
 };
 
-export const showLoadingOnPubs = (state) => pubsStore(state).isLoading && pubs(state).length === 0;
+export const showLoadingOnPubs = (state) => pubsStore(state).isLoading && Object.keys(pubs(state)).length === 0;
