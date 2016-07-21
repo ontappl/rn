@@ -1,5 +1,6 @@
 package pl.netczuk.ontaprn;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.crashlytics.android.Crashlytics;
@@ -13,6 +14,12 @@ public class MainActivity extends ReactActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
+    }
+
+    @Override
+    public void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        ((MainApplication) getApplication()).onNewIntent(intent);
     }
 
     /**

@@ -106,7 +106,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 23
         versionCode 401048589
-        versionName "0.2.2"
+        versionName "0.2.3-dev"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
@@ -156,6 +156,10 @@ dependencies {
     compile project(':react-native-fabric')
     compile('com.crashlytics.sdk.android:crashlytics:2.5.5@aar') {
         transitive = true;
+    }
+    compile project(':react-native-push-notification')
+    compile ('com.google.android.gms:play-services-gcm:8.1.0') {
+        force = true;
     }
 }
 

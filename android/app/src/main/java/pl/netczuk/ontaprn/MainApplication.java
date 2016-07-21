@@ -1,7 +1,9 @@
 package pl.netczuk.ontaprn;
 
 import android.app.Application;
+import android.content.Intent;
 
+import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -12,6 +14,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MainApplication extends Application implements ReactApplication {
+    private ReactNativePushNotificationPackage mReactNativePushNotificationPackage;
+
     private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
         @Override
         protected boolean getUseDeveloperSupport() {
@@ -20,9 +24,11 @@ public class MainApplication extends Application implements ReactApplication {
 
         @Override
         protected List<ReactPackage> getPackages() {
+            mReactNativePushNotificationPackage = new ReactNativePushNotificationPackage();
             return Arrays.<ReactPackage>asList(
                     new FabricPackage(),
-                    new MainReactPackage()
+                    new MainReactPackage(),
+                    mReactNativePushNotificationPackage
             );
         }
     };
@@ -30,5 +36,11 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     public ReactNativeHost getReactNativeHost() {
         return mReactNativeHost;
+    }
+
+    public void onNewIntent(Intent intent) {
+        if (mReactNativePushNotificationPackage != null) {
+            mReactNativePushNotificationPackage.newIntent(intent);
+        }
     }
 }

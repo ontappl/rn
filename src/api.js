@@ -66,12 +66,13 @@ export const fetchPubs = (cityId) => {
         });
 };
 
-export const fetchTaps = (pubId) => {
+export const sendToken = (token) => {
     const options = {
-        method: 'GET',
+        method: 'POST',
         headers,
+        body: JSON.stringify({type: 'android', token}),
     };
-    return fetch(`${baseUrl}pubs/${pubId}/taps`, options)
+    return fetch(`${baseUrl}notification-tokens`, options)
         .then(response => {
             if (response.ok) {
                 return response.json();
@@ -80,3 +81,4 @@ export const fetchTaps = (pubId) => {
             }
         });
 };
+
