@@ -42,48 +42,48 @@ export class ApiError extends Error {
 }
 
 export const fetchCities = () => {
-    const options = {
-        method: 'GET',
-        headers,
-    };
-    return fetch(`${baseUrl}cities/`, options)
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                return throwError(response);
-            }
-        });
+  const options = {
+    method: 'GET',
+    headers,
+  };
+  return fetch(`${baseUrl}cities/`, options)
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        return throwError(response);
+      }
+    });
 };
 
 export const fetchPubs = (cityId) => {
-    const options = {
-        method: 'GET',
-        headers,
-    };
-    return fetch(`${baseUrl}cities/${cityId}/pubs`, options)
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                return throwError(response);
-            }
-        });
+  const options = {
+    method: 'GET',
+    headers,
+  };
+  return fetch(`${baseUrl}cities/${cityId}/pubs`, options)
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        return throwError(response);
+      }
+    });
 };
 
 export const fetchTaps = (pubId) => {
-    const options = {
-        method: 'GET',
-        headers,
-    };
-    return fetch(`${baseUrl}pubs/${pubId}/taps`, options)
-        .then(response => {
-            if (response.ok) {
-                return response.json().then(parseTaps);
-            } else {
-                return throwError(response);
-            }
-        });
+  const options = {
+    method: 'GET',
+    headers,
+  };
+  return fetch(`${baseUrl}pubs/${pubId}/taps`, options)
+    .then(response => {
+      if (response.ok) {
+        return response.json().then(parseTaps);
+      } else {
+        return throwError(response);
+      }
+    });
 };
 
 export const parseTaps = (responseBody) => responseBody.map((t) => ({
@@ -105,3 +105,20 @@ const parsePrices = (prices) => {
     return Object.keys(prices).sort().map((k) => prices[k]);
   }
 }
+
+
+export const sendToken = (token) => {
+  const options = {
+    method: 'POST',
+    headers,
+    body: JSON.stringify({type: 'android', token}),
+  };
+  return fetch(`${baseUrl}notification-tokens`, options)
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        return throwError(response);
+      }
+    });
+};

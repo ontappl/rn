@@ -7,6 +7,7 @@ export const config = {
     baseUrl: 'http://www.4chan.org/api/',
     currentApiVersion: 'v666',
     apiKey: 'YOUR_KEY_HERE_LOL',
+    androidSenderId: '66677766677',
 };
 
 ```
