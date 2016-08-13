@@ -3,13 +3,17 @@ if (process.env.NODE_ENV === 'test') {
   };
 }
 
+import DeviceInfo from 'react-native-device-info';
+
 import {config} from '../.config';
 
 
 const baseUrl = `${config.baseUrl}${config.currentApiVersion}/`;
 const headers = new Headers({
+    'Accept': 'application/json',
     'Content-Type': 'application/json',
     'Api-Key': config.apiKey,
+    'Device-Id': DeviceInfo.getUniqueID(),
 });
 
 function throwError(response) {
@@ -114,11 +118,15 @@ export const sendToken = (token) => {
     body: JSON.stringify({type: 'android', token}),
   };
   return fetch(`${baseUrl}notification-tokens`, options)
-    .then(response => {
-      if (response.ok) {
-        return response.json();
-      } else {
-        return throwError(response);
-      }
-    });
+    .then(response => response.ok ? response.json() : throwError(response));
+};
+
+export const sendFavoritedPubs = (pubs) => {
+  const options = {
+    method: 'PUT',
+    headers,
+    pubs: JSON.stringify(pubs),
+  };
+  return fetch(`${baseUrl}favorites`, options)
+    .then((response) => response.ok ? response.json() : throwError(response));
 };

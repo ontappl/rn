@@ -1,8 +1,8 @@
 import * as actionTypes from '../actionTypes/pushNotifications';
 
 
-export const receiveToken = (token) => ({
-    type: actionTypes.RECEIVE_TOKEN,
+export const handleToken = (token) => ({
+    type: actionTypes.HANDLE_TOKEN,
     token,
 });
 

@@ -2,7 +2,8 @@ import createSagaMiddleware from 'redux-saga';
 import {createStore, applyMiddleware} from 'redux';
 import * as storage from 'redux-storage';
 import createStorageEngine from 'redux-storage-engine-reactnativeasyncstorage';
-import filter from 'redux-storage-decorator-filter'
+import filter from 'redux-storage-decorator-filter';
+import createLogger from 'redux-logger';
 
 import {reducer} from './reducers';
 import {saga} from './sagas';
@@ -36,7 +37,12 @@ export function configureStore() {
     const sagaMiddleWare = createSagaMiddleware();
     const store = createStore(
         storage.reducer(reducer),
-        applyMiddleware(analyticsMiddleware, sagaMiddleWare, storageMiddleware)
+        applyMiddleware(
+          analyticsMiddleware,
+          sagaMiddleWare,
+          storageMiddleware,
+          createLogger(),
+        )
     );
     sagaMiddleWare.run(saga);
     return store;

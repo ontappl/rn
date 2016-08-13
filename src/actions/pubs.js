@@ -27,6 +27,20 @@ export const togglePubFavorite = (id) => ({
     id,
 });
 
+export const sendFavoritedPubsRequest = (pubs) => ({
+  type: actionTypes.SEND_FAVORITED_PUBS_REQUEST,
+  pubs,
+});
+
+export const sendFavoritedPubsSuccess = () => ({
+  type: actionTypes.SEND_FAVORITED_PUBS_SUCCESS,
+});
+
+export const sendFavoritedPubsFailure = (error) => ({
+  type: actionTypes.SEND_FAVORITED_PUBS_FAILURE,
+  error,
+});
+
 export const fetchTapsRequest = (pubId) => ({
     type: actionTypes.FETCH_TAPS_REQUEST,
     pubId,
