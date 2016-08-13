@@ -1,3 +1,8 @@
+if (process.env.NODE_ENV === 'test') {
+  global.Headers = () => {
+  };
+}
+
 import {config} from '../.config';
 
 
@@ -74,9 +79,29 @@ export const fetchTaps = (pubId) => {
     return fetch(`${baseUrl}pubs/${pubId}/taps`, options)
         .then(response => {
             if (response.ok) {
-                return response.json();
+                return response.json().then(parseTaps);
             } else {
                 return throwError(response);
             }
         });
 };
+
+export const parseTaps = (responseBody) => responseBody.map((t) => ({
+  tapName: t.tapName,
+  prices: parsePrices(t.prices),
+  beer: {
+    name: t.beer.name,
+    style: t.beer.style,
+    brewery: t.beer.brewery,
+    abv: t.beer.abv,
+    ibu: t.beer.ibu,
+  }
+}));
+
+const parsePrices = (prices) => {
+  if (prices.constructor === Array) {
+    return prices;
+  } else {
+    return Object.keys(prices).sort().map((k) => prices[k]);
+  }
+}
