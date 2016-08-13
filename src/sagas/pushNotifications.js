@@ -1,6 +1,7 @@
 import {takeLatest} from 'redux-saga';
 import {fork, put, call} from 'redux-saga/effects';
 import PushNotification from 'react-native-push-notification';
+import DeviceInfo from 'react-native-device-info';
 
 import {config} from '../../.config';
 import * as actions from '../actions/pushNotifications';
@@ -27,6 +28,10 @@ export function* init() {
 
         onNotification: function (notification) {
             console.warn('Received notification: ' + JSON.stringify(notification));
+            // PushNotification.localNotificationSchedule({
+            //     message: "My Notification Message", // (required)
+            //     date: new Date(Date.now() + (10 * 1000)) // in 60 secs
+            // });
         },
     });
 
@@ -62,7 +67,8 @@ function createChannel() {
 
 function* sendToken(action) {
     try {
-        const token = yield call(api.sendToken, action.token);
+        const deviceId = DeviceInfo.getUniqueID();
+        const token = yield call(api.sendToken, action.token, deviceId);
         yield put(actions.sendTokenSuccess(token));
     } catch (error) {
         logError(error);

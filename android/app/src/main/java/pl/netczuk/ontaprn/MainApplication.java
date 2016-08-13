@@ -8,6 +8,7 @@ import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
+import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.smixx.fabric.FabricPackage;
 
 import java.util.Arrays;
@@ -26,6 +27,7 @@ public class MainApplication extends Application implements ReactApplication {
         protected List<ReactPackage> getPackages() {
             mReactNativePushNotificationPackage = new ReactNativePushNotificationPackage();
             return Arrays.<ReactPackage>asList(
+                    new RNDeviceInfo(),
                     new FabricPackage(),
                     new MainReactPackage(),
                     mReactNativePushNotificationPackage
