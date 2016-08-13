@@ -44,3 +44,7 @@ android/keystores/debug.keystore
 .config.js
 android/app/fabric.properties
 android/app/pl.netczuk.ontappl.keystore
+*.apk
+*.bundle
+*.bundle.meta
+/android/app/src/main/res/drawable-*/
