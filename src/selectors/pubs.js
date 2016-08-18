@@ -15,7 +15,7 @@ const pubs = (state) => state.entities.pubs;
 
 const favorited = (state, pubId) => favorites(state).indexOf(pubId) !== -1;
 
-const favorites = (state) => state.entities.favoritedPubs;
+export const favorites = (state) => state.entities.favoritedPubs;
 
 export const sortedPubs = (state, cityId) => {
     return Object.keys(pubs(state))
