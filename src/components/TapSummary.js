@@ -5,10 +5,10 @@ import {
     StyleSheet,
 } from 'react-native';
 
-import {colors} from './styles';
+import {colors,} from './styles';
 
 
-export const TapSummary = ({tap}) => (
+export const TapSummary = ({tap,}) => (
     <View style={styles.tap}>
         <Text style={styles.tapName}>{tap.tapName}</Text>
         {tap.beer && <Beer beer={tap.beer}/>}
@@ -17,7 +17,7 @@ export const TapSummary = ({tap}) => (
     </View>
 );
 
-const Beer = ({beer}) => (
+const Beer = ({beer,}) => (
     <View>
         <Text style={styles.beerName}>{beer.name}</Text>
         <Text style={styles.beerStyleName}>{beer.style}</Text>
@@ -35,57 +35,57 @@ const Beer = ({beer}) => (
     </View>
 );
 
-const Prices = ({prices}) => {
-    if (!prices || prices.length === 0) {
-        return null;
-    }
+const Prices = ({prices,}) => {
+  if (!prices || prices.length === 0) {
+    return null;
+  }
 
-    return (
+  return (
         <Text>Ceny: {prices.map((p) => Number(p/100).toFixed(2)).join(', ')}</Text>
     );
 };
 
 const styles = StyleSheet.create({
-    tap: {
-        padding: 16,
-    },
-    tapName: {
-        fontSize: 12,
-        color: colors.text.disabled,
-    },
-    emptyTap: {
-        fontSize: 16,
-        fontFamily: 'roboto_regular',
-        color: colors.text.secondary,
-    },
-    beerName: {
-        fontSize: 18,
-        fontFamily: 'roboto_medium',
-        color: colors.text.primary,
-    },
-    beerStyleName: {
-        fontSize: 14,
-        color: colors.text.secondary,
-    },
-    beerBreweryName: {
-        fontSize: 14,
-        color: colors.text.secondary,
-    },
-    detailsWrapper: {
-        flexDirection: 'row',
-    },
-    detailWrapper: {
-        flexDirection: 'row',
-        alignItems: 'flex-end',
-        marginRight: 8,
-    },
-    detailsName: {
-        fontSize: 12,
-        color: colors.text.secondary,
-        marginRight: 4,
-    },
-    detailsValue: {
-        fontSize: 14,
-        color: colors.text.secondary,
-    },
+  tap: {
+    padding: 16,
+  },
+  tapName: {
+    fontSize: 12,
+    color: colors.text.disabled,
+  },
+  emptyTap: {
+    fontSize: 16,
+    fontFamily: 'roboto_regular',
+    color: colors.text.secondary,
+  },
+  beerName: {
+    fontSize: 18,
+    fontFamily: 'roboto_medium',
+    color: colors.text.primary,
+  },
+  beerStyleName: {
+    fontSize: 14,
+    color: colors.text.secondary,
+  },
+  beerBreweryName: {
+    fontSize: 14,
+    color: colors.text.secondary,
+  },
+  detailsWrapper: {
+    flexDirection: 'row',
+  },
+  detailWrapper: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    marginRight: 8,
+  },
+  detailsName: {
+    fontSize: 12,
+    color: colors.text.secondary,
+    marginRight: 4,
+  },
+  detailsValue: {
+    fontSize: 14,
+    color: colors.text.secondary,
+  },
 });

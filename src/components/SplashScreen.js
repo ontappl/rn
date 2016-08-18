@@ -5,7 +5,7 @@ import {
     StyleSheet,
 } from 'react-native';
 
-import {colors} from './styles';
+import {colors,} from './styles';
 
 
 export const SplashScreen = () => (
@@ -15,13 +15,13 @@ export const SplashScreen = () => (
 );
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    text: {
-        fontSize: 16,
-        color: colors.text.disabled,
-    },
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  text: {
+    fontSize: 16,
+    color: colors.text.disabled,
+  },
 });

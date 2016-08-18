@@ -1,15 +1,14 @@
 import React from 'react';
 import {
     View,
-    Text,
 } from 'react-native';
 
-import {NavigationBar} from './NavigationBar';
-import {TabBar} from './TabBar';
+import {NavigationBar,} from './NavigationBar';
+import {TabBar,} from './TabBar';
 
 
-export const Home = ({city, tabs, onChangeTab, selectedScene, onOptionsPress}) => (
-    <View style={{flex: 1}}>
+export const Home = ({city, tabs, onChangeTab, selectedScene, onOptionsPress,}) => (
+    <View style={{flex: 1,}}>
         <NavigationBar
             title={city && city.name ? city.name : 'temp'} // TODO FIX app reset race
             rightButtonImage={require('../img/icon-more-primary.png')}

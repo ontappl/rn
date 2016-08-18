@@ -2,15 +2,15 @@ import * as actionTypes from '../actionTypes/rootNavigator';
 
 
 export const push = (state) => ({
-    type: actionTypes.PUSH,
-    newState: typeof state === 'string' ? {key: state} : state
+  type: actionTypes.PUSH,
+  newState: typeof state === 'string' ? {key: state,} : state,
 });
 
 export const pop = (source) => ({
-    type: actionTypes.POP,
-    source,
+  type: actionTypes.POP,
+  source,
 });
 
 export const resetOnCurrentScene = () => ({
-    type: actionTypes.RESET_ON_CURRENT_SCENE,
+  type: actionTypes.RESET_ON_CURRENT_SCENE,
 });

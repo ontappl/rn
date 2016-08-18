@@ -6,11 +6,11 @@ import {
     TouchableNativeFeedback,
 } from 'react-native';
 
-import {NavigationBar} from './NavigationBar';
-import {colors} from './styles';
+import {NavigationBar,} from './NavigationBar';
+import {colors,} from './styles';
 
 
-export const Options = ({onBack, onResetCityPress}) => (
+export const Options = ({onBack, onResetCityPress,}) => (
     <View style={styles.container}>
         <NavigationBar
             title="Ustawienia"
@@ -29,23 +29,23 @@ export const Options = ({onBack, onResetCityPress}) => (
 );
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    spacer: {
-        height: 8,
-    },
-    buttonContainer: {
-        paddingLeft: 16,
-        paddingRight: 16,
-        minHeight: 48,
-        justifyContent: 'center',
-        borderBottomWidth: 1,
-        borderColor: colors.text.dividers,
-    },
-    buttonText: {
-        fontSize: 16,
-        fontFamily: 'roboto_regular',
-        color: colors.text.primary,
-    },
+  container: {
+    flex: 1,
+  },
+  spacer: {
+    height: 8,
+  },
+  buttonContainer: {
+    paddingLeft: 16,
+    paddingRight: 16,
+    minHeight: 48,
+    justifyContent: 'center',
+    borderBottomWidth: 1,
+    borderColor: colors.text.dividers,
+  },
+  buttonText: {
+    fontSize: 16,
+    fontFamily: 'roboto_regular',
+    color: colors.text.primary,
+  },
 });

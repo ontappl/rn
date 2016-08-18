@@ -1,18 +1,17 @@
 import React from 'react';
 import {
     View,
-    Text,
     StyleSheet,
     ListView,
 } from 'react-native';
 
-import {LoadingIndicator} from './LoadingIndicator';
-import {PubRow} from './PubRow';
-import {PlainListSeparator} from './PlainListRow';
+import {LoadingIndicator,} from './LoadingIndicator';
+import {PubRow,} from './PubRow';
+import {PlainListSeparator,} from './PlainListRow';
 
 
-export const Pubs = ({isLoading, pubsDataSource, onPubSelect, onTogglePubFavorite}) => (
-    <View style={{flex: 1, backgroundColor: 'white'}}>
+export const Pubs = ({isLoading, pubsDataSource, onPubSelect, onTogglePubFavorite,}) => (
+    <View style={{flex: 1, backgroundColor: 'white',}}>
         <LoadingIndicator show={isLoading}/>
         {!isLoading &&
         <ListView
@@ -29,7 +28,7 @@ export const Pubs = ({isLoading, pubsDataSource, onPubSelect, onTogglePubFavorit
                 />
             }
             renderSeparator={(_, rowId) => <PlainListSeparator key={rowId}/>}
-            contentContainerStyle={{paddingTop: 8}}
+            contentContainerStyle={{paddingTop: 8,}}
             initialListSize={20}
             pageSize={30}
         />}
@@ -37,7 +36,7 @@ export const Pubs = ({isLoading, pubsDataSource, onPubSelect, onTogglePubFavorit
 );
 
 const styles = StyleSheet.create({
-    list: {
-        flex: 1,
-    },
+  list: {
+    flex: 1,
+  },
 });

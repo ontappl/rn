@@ -7,10 +7,10 @@ import {
     StyleSheet,
 } from 'react-native';
 
-import {colors} from './styles';
+import {colors,} from './styles';
 
 
-export const NavigationBar = ({title, onBackPress, rightButtonImage, onRightButtonPress}) => (
+export const NavigationBar = ({title, onBackPress, rightButtonImage, onRightButtonPress,}) => (
     <View style={styles.container}>
         {onBackPress &&
         <TouchableNativeFeedback onPress={onBackPress}>
@@ -23,7 +23,7 @@ export const NavigationBar = ({title, onBackPress, rightButtonImage, onRightButt
         </TouchableNativeFeedback>
         }
         <Text
-            style={[styles.title, onBackPress && styles.titleWithLeftButton]}
+            style={[styles.title, onBackPress && styles.titleWithLeftButton,]}
             lineBreakMode="tail"
             numberOfLines={1}
         >
@@ -40,29 +40,29 @@ export const NavigationBar = ({title, onBackPress, rightButtonImage, onRightButt
 );
 
 const styles = StyleSheet.create({
-    container: {
-        height: 56,
-        backgroundColor: colors.primary,
-        elevation: 4,
-        flexDirection: 'row',
-        alignItems: 'center',
-    },
-    button: {
-        padding: 12,
-        margin: 2,
-    },
-    buttonImage: {
-        width: 24,
-        height: 24,
-    },
-    title: {
-        flex: 1,
-        marginLeft: 16,
-        fontSize: 20,
-        fontFamily: 'roboto_medium',
-        color: colors.text.primary,
-    },
-    titleWithLeftButton: {
-        marginLeft: 20,
-    },
+  container: {
+    height: 56,
+    backgroundColor: colors.primary,
+    elevation: 4,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  button: {
+    padding: 12,
+    margin: 2,
+  },
+  buttonImage: {
+    width: 24,
+    height: 24,
+  },
+  title: {
+    flex: 1,
+    marginLeft: 16,
+    fontSize: 20,
+    fontFamily: 'roboto_medium',
+    color: colors.text.primary,
+  },
+  titleWithLeftButton: {
+    marginLeft: 20,
+  },
 });

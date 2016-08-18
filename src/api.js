@@ -1,3 +1,5 @@
+/* global Headers, fetch */
+
 if (process.env.NODE_ENV === 'test') {
   global.Headers = () => {
   };
@@ -5,44 +7,44 @@ if (process.env.NODE_ENV === 'test') {
 
 import DeviceInfo from 'react-native-device-info';
 
-import {config} from '../.config';
+import {config,} from '../.config';
 
 
 const baseUrl = `${config.baseUrl}${config.currentApiVersion}/`;
 const headers = new Headers({
-    'Accept': 'application/json',
-    'Content-Type': 'application/json',
-    'Api-Key': config.apiKey,
-    'Device-Id': DeviceInfo.getUniqueID(),
+  'Accept': 'application/json',
+  'Content-Type': 'application/json',
+  'Api-Key': config.apiKey,
+  'Device-Id': DeviceInfo.getUniqueID(),
 });
 
 function throwError(response) {
-    const {url, status} = response;
-    return response
+  const {url, status,} = response;
+  return response
         .json()
         .then(
             (body) => {
-                throw new ApiError('Api error', {url, status, body})
+              throw new ApiError('Api error', {url, status, body,});
             },
             () => {
-                throw new ApiError('Api error', {url, status})
+              throw new ApiError('Api error', {url, status,});
             }
         );
 }
 
 export class ApiError extends Error {
-    constructor(message, data) {
-        super(message);
-        this.name = this.constructor.name;
-        this.data = data;
+  constructor(message, data) {
+    super(message);
+    this.name = this.constructor.name;
+    this.data = data;
         // better node stacktaces, more here:
         // http://stackoverflow.com/a/32749533/1035552
-        if (typeof Error.captureStackTrace === 'function') {
-            Error.captureStackTrace(this, this.constructor);
-        } else {
-            this.stack = (new Error(message)).stack;
-        }
+    if (typeof Error.captureStackTrace === 'function') {
+      Error.captureStackTrace(this, this.constructor);
+    } else {
+      this.stack = (new Error(message)).stack;
     }
+  }
 }
 
 export const fetchCities = () => {
@@ -99,7 +101,7 @@ export const parseTaps = (responseBody) => responseBody.map((t) => ({
     brewery: t.beer.brewery,
     abv: t.beer.abv,
     ibu: t.beer.ibu,
-  }
+  },
 }));
 
 const parsePrices = (prices) => {
@@ -108,14 +110,14 @@ const parsePrices = (prices) => {
   } else {
     return Object.keys(prices).sort().map((k) => prices[k]);
   }
-}
+};
 
 
 export const sendToken = (token) => {
   const options = {
     method: 'POST',
     headers,
-    body: JSON.stringify({type: 'android', token}),
+    body: JSON.stringify({type: 'android', token,}),
   };
   return fetch(`${baseUrl}notification-tokens`, options)
     .then(response => response.ok ? response.json() : throwError(response));

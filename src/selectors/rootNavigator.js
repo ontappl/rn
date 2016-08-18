@@ -1,1 +1,1 @@
-export const currentRoute = ({rootNavigator}) => rootNavigator.routes[rootNavigator.index];
+export const currentRoute = ({rootNavigator,}) => rootNavigator.routes[rootNavigator.index];

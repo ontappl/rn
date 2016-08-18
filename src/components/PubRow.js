@@ -5,13 +5,13 @@ import {
     TouchableOpacity,
     Image,
     Text,
-    StyleSheet
+    StyleSheet,
 } from 'react-native';
 
-import {colors} from './styles';
+import {colors,} from './styles';
 
 
-export const PubRow = ({name, onPress, isFavourited, onToggleFavorite}) => (
+export const PubRow = ({name, onPress, isFavourited, onToggleFavorite,}) => (
     <TouchableNativeFeedback
         onPress={onPress}
         background={TouchableNativeFeedback.Ripple(colors.accent)}
@@ -31,26 +31,26 @@ export const PubRow = ({name, onPress, isFavourited, onToggleFavorite}) => (
 );
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        flexDirection: 'row',
-        paddingLeft: 4,
-        paddingRight: 16,
-        height: 48,
-        alignItems: 'center',
-    },
-    favoriteButton: {
-        padding: 12,
-    },
-    favoriteImage: {
-        width: 24,
-        height: 24,
-    },
-    name: {
-        flex: 1,
-        marginLeft: 20,
-        fontSize: 16,
-        fontFamily: 'roboto_regular',
-        color: colors.text.primary,
-    },
+  container: {
+    flex: 1,
+    flexDirection: 'row',
+    paddingLeft: 4,
+    paddingRight: 16,
+    height: 48,
+    alignItems: 'center',
+  },
+  favoriteButton: {
+    padding: 12,
+  },
+  favoriteImage: {
+    width: 24,
+    height: 24,
+  },
+  name: {
+    flex: 1,
+    marginLeft: 20,
+    fontSize: 16,
+    fontFamily: 'roboto_regular',
+    color: colors.text.primary,
+  },
 });

@@ -5,10 +5,10 @@ import {
     StyleSheet,
 } from 'react-native';
 
-import {colors} from './styles';
+import {colors,} from './styles';
 
 
-export const Beers = ({city}) => (
+export const Beers = () => (
     <View style={styles.wrapper}>
         <Text style={styles.text}>
             Tutaj znajdzie się wyszukiwarka i lista piw.
@@ -17,17 +17,17 @@ export const Beers = ({city}) => (
 );
 
 const styles = StyleSheet.create({
-    wrapper: {
-        flex: 1,
-        backgroundColor: 'white',
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingLeft: 60,
-        paddingRight: 60,
-    },
-    text: {
-        fontSize: 16,
-        textAlign: 'center',
-        color: colors.text.disabled,
-    },
+  wrapper: {
+    flex: 1,
+    backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingLeft: 60,
+    paddingRight: 60,
+  },
+  text: {
+    fontSize: 16,
+    textAlign: 'center',
+    color: colors.text.disabled,
+  },
 });
