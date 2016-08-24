@@ -120,7 +120,6 @@ const parsePrices = (prices) => {
   }
 };
 
-
 export const sendToken = (token) => {
   const options = {
     method: 'POST',
@@ -138,5 +137,5 @@ export const sendFavoritedPubs = (pubs) => {
     pubs: JSON.stringify(pubs),
   };
   return fetch(`${baseUrl}favorites`, options)
-    .then((response) => response.ok ? response.json() : throwError(response));
+    .then((response) => response.status === 204 ? undefined : throwError(response));
 };
