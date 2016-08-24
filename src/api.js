@@ -95,14 +95,22 @@ export const fetchTaps = (pubId) => {
 export const parseTaps = (responseBody) => responseBody.map((t) => ({
   tapName: t.tapName,
   prices: parsePrices(t.prices),
-  beer: {
-    name: t.beer.name,
-    style: t.beer.style,
-    brewery: t.beer.brewery,
-    abv: t.beer.abv,
-    ibu: t.beer.ibu,
-  },
+  beer: parseBeer(t.beer),
 }));
+
+export const parseBeer = (beer) => {
+  if (!beer) {
+    return null;
+  } else {
+    return {
+      name: beer.name,
+      style: beer.style,
+      brewery: beer.brewery,
+      abv: beer.abv,
+      ibu: beer.ibu,
+    };
+  }
+};
 
 const parsePrices = (prices) => {
   if (prices.constructor === Array) {
