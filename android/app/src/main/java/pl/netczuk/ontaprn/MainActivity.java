@@ -16,12 +16,6 @@ public class MainActivity extends ReactActivity {
         Fabric.with(this, new Crashlytics());
     }
 
-    @Override
-    public void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        ((MainApplication) getApplication()).onNewIntent(intent);
-    }
-
     /**
      * Returns the name of the main component registered from JavaScript.
      * This is used to schedule rendering of the component.
