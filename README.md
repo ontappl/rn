@@ -1,4 +1,4 @@
-# OnTap React Native App
+# OnTap React Native App (halted)
 
 ## General Setup
 - `.config` before starting the app add `.config` file (which is ignored by git) and fill it with this template:
@@ -17,5 +17,3 @@ export const config = {
 1. Install dependencies: `npm i`
 2. Establish USB connection with device: `adb reverse tcp:8081 tcp:8081`
 3. Start Android bundle: `react-native run-android`
-
-
